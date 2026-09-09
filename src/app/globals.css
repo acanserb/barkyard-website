@@ -1,0 +1,93 @@
+@import "tailwindcss";
+
+/* ============================================================
+   BARKYARD ANKARA — MARKA SİSTEMİ
+   Logodan türetilmiştir. Renk eklemeden önce buraya bakın.
+   ============================================================ */
+
+@theme {
+  /* Zemin — kirli beyaz / krem */
+  --color-cream-50: #fdfaf7;
+  --color-cream-100: #f8f2ea;
+  --color-cream-200: #efe6da;
+  --color-cream-300: #e2d5c4;
+
+  /* Mürekkep — logodaki antrasit */
+  --color-ink-500: #6b6a63;
+  --color-ink-700: #3d3d37;
+  --color-ink-900: #26261f;
+
+  /* Zeytin — ikincil, doğal */
+  --color-olive-400: #8a9479;
+  --color-olive-600: #5a6650;
+  --color-olive-800: #3a422f;
+
+  /* Sarı — yalnızca CTA ve küçük vurgu. Zemin olarak kullanmayın. */
+  --color-accent-300: #f7e9a0;
+  --color-accent-400: #f2de7e;
+  --color-accent-500: #e6cd5c;
+
+  --font-display: var(--font-fraunces), Georgia, serif;
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+}
+
+:root {
+  color-scheme: light;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  background-color: var(--color-cream-50);
+  color: var(--color-ink-900);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  /* Mobilde sabit CTA çubuğunun içeriği kapatmaması için */
+  padding-bottom: env(safe-area-inset-bottom);
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  letter-spacing: -0.015em;
+  text-wrap: balance;
+}
+
+p {
+  text-wrap: pretty;
+}
+
+::selection {
+  background: var(--color-accent-400);
+  color: var(--color-ink-900);
+}
+
+/* Klavye erişilebilirliği */
+:focus-visible {
+  outline: 2px solid var(--color-olive-600);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+/* Hareket tercihine saygı */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Görsel yerleştirilmemiş alanlar için placeholder deseni.
+   Gerçek fotoğraflar eklendiğinde bu sınıf kendiliğinden devre dışı kalır. */
+.bk-placeholder {
+  background-color: var(--color-cream-200);
+  background-image:
+    linear-gradient(45deg, rgba(0,0,0,0.03) 25%, transparent 25%, transparent 75%, rgba(0,0,0,0.03) 75%),
+    linear-gradient(45deg, rgba(0,0,0,0.03) 25%, transparent 25%, transparent 75%, rgba(0,0,0,0.03) 75%);
+  background-size: 24px 24px;
+  background-position: 0 0, 12px 12px;
+}
