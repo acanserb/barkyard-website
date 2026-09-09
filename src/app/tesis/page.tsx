@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { site, fullAddress } from "@/config/site";
 import { Container, CtaBlock, Eyebrow, Figure, H2, Lead, Section } from "@/components/ui";
 import { DirectionsTextLink } from "@/components/ContactLinks";
+import MapBlock from "@/components/MapBlock";
 import JsonLd from "@/components/JsonLd";
 import { breadcrumbSchema } from "@/lib/schema";
 
@@ -79,8 +80,10 @@ export default function Page() {
             />
           ))}
         </div>
+        {/* ⚠️ Bu satırı yalnızca galerideki TÜM görseller gerçek tesis fotoğrafı olduğunda geri koyun.
+            Yapay zeka ile üretilmiş veya stok görsel varken bu cümle doğru olmaz. */}
         <p className="mt-5 text-[13px] text-ink-500">
-          Fotoğraflar Barkyard Ankara tesisine aittir. Stok görsel kullanılmamıştır.
+          Tesisi yerinde görmek için randevu alabilirsiniz.
         </p>
       </Section>
 
@@ -143,21 +146,7 @@ export default function Page() {
             </div>
           </div>
           <div className="overflow-hidden rounded-2xl">
-            {site.mapsEmbedUrl ? (
-              <iframe
-                src={site.mapsEmbedUrl}
-                title="Barkyard Ankara konumu"
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-                className="aspect-[4/3] w-full border-0"
-              />
-            ) : (
-              <div className="bk-placeholder flex aspect-[4/3] items-center justify-center border border-dashed border-ink-500/25">
-                <span className="px-6 text-center text-[11px] font-medium uppercase tracking-[0.14em] text-ink-500">
-                  Google Haritalar embed
-                </span>
-              </div>
-            )}
+            <MapBlock className="aspect-[4/3]" />
           </div>
         </div>
       </Section>

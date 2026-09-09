@@ -18,6 +18,7 @@ import {
 import { DirectionsTextLink } from "@/components/ContactLinks";
 import HeroBackground from "@/components/HeroBackground";
 import Faq, { faqSchema } from "@/components/Faq";
+import MapBlock from "@/components/MapBlock";
 import JsonLd from "@/components/JsonLd";
 import { homeFaq, trustPoints, howWeWork, facilityHighlights } from "@/content/home";
 
@@ -237,21 +238,7 @@ export default function Home() {
             </div>
           </div>
           <div className="overflow-hidden rounded-2xl">
-            {site.mapsEmbedUrl ? (
-              <iframe
-                src={site.mapsEmbedUrl}
-                title="Barkyard Ankara konumu"
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-                className="aspect-[4/3] w-full border-0"
-              />
-            ) : (
-              <div className="bk-placeholder flex aspect-[4/3] items-center justify-center border border-dashed border-cream-100/30">
-                <span className="px-6 text-center text-[11px] font-medium uppercase tracking-[0.14em] text-ink-500">
-                  Google Haritalar embed — site.ts içindeki mapsEmbedUrl doldurulunca görünür
-                </span>
-              </div>
-            )}
+            <MapBlock tone="dark" className="aspect-[4/3]" />
           </div>
         </div>
       </Section>

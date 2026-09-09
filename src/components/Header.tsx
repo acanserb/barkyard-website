@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { useState } from "react";
 import { usePathname } from "next/navigation";
 import { site } from "@/config/site";
@@ -26,15 +27,22 @@ export default function Header() {
   return (
     <header className="sticky top-0 z-40 border-b border-ink-900/8 bg-cream-50/92 backdrop-blur-md">
       <Container>
-        <div className="flex h-[68px] items-center justify-between gap-4">
-          <Link href="/" className="flex items-baseline gap-2.5" onClick={() => setOpen(false)}>
-            <span className="font-display text-[19px] font-semibold tracking-[0.14em] text-ink-900">BARKYARD</span>
-            <span className="hidden text-[10px] font-semibold uppercase tracking-[0.2em] text-olive-600 sm:inline">
-              Ankara
+        <div className="flex h-[68px] items-center justify-between gap-6">
+          <Link href="/" className="flex items-center gap-3" onClick={() => setOpen(false)} aria-label="Barkyard Ankara ana sayfa">
+            <Image
+              src="/images/marka/barkyard-mark.svg"
+              alt=""
+              width={34}
+              height={37}
+              priority
+              className="h-[34px] w-auto"
+            />
+            <span className="font-display text-[19px] font-semibold tracking-[0.14em] text-ink-900">
+              BARKYARD
             </span>
           </Link>
 
-          <nav className="hidden items-center gap-6 lg:flex" aria-label="Ana menü">
+          <nav className="hidden items-center gap-5 lg:flex xl:gap-6" aria-label="Ana menü">
             {nav.map((item) => {
               const active = pathname === item.href;
               return (

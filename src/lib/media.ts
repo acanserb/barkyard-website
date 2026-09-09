@@ -14,6 +14,7 @@
 
 export const availableImages: string[] = [
   "/images/marka/barkyard-logo.svg",
+  "/images/marka/barkyard-mark.svg",
   "/images/marka/barkyard-logo-512.png",
   "/images/marka/og-barkyard.png",
   "/images/tesis/tesis-dis-gorunum.jpg",

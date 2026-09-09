@@ -3,6 +3,7 @@ import { site, fullAddress } from "@/config/site";
 import { Container, Eyebrow, Section, WhatsAppButton } from "@/components/ui";
 import { DirectionsTextLink, PhoneLink } from "@/components/ContactLinks";
 import ContactForm from "@/components/ContactForm";
+import MapBlock from "@/components/MapBlock";
 import JsonLd from "@/components/JsonLd";
 import { breadcrumbSchema } from "@/lib/schema";
 
@@ -91,22 +92,12 @@ export default function Page() {
       </Section>
 
       {/* Harita */}
-      <section className="bg-cream-100">
-        {site.mapsEmbedUrl ? (
-          <iframe
-            src={site.mapsEmbedUrl}
-            title="Barkyard Ankara konumu"
-            loading="lazy"
-            referrerPolicy="no-referrer-when-downgrade"
-            className="h-[380px] w-full border-0 sm:h-[460px]"
-          />
-        ) : (
-          <div className="bk-placeholder flex h-[380px] items-center justify-center sm:h-[460px]">
-            <span className="px-6 text-center text-[11px] font-medium uppercase tracking-[0.14em] text-ink-500">
-              Google Haritalar embed — site.ts içindeki mapsEmbedUrl doldurulunca görünür
-            </span>
+      <section className="bg-cream-100 pb-16 sm:pb-20">
+        <Container>
+          <div className="overflow-hidden rounded-2xl">
+            <MapBlock className="min-h-[260px]" />
           </div>
-        )}
+        </Container>
       </section>
 
       <JsonLd data={breadcrumbSchema([{ name: "İletişim", path: "/iletisim/" }])} />

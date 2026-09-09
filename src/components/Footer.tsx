@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { site, fullAddress } from "@/config/site";
 import { services } from "@/content/services";
 import { Container } from "@/components/ui";
@@ -10,6 +11,13 @@ export default function Footer() {
       <Container className="py-14">
         <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
           <div>
+            <Image
+              src="/images/marka/barkyard-mark.svg"
+              alt=""
+              width={38}
+              height={41}
+              className="mb-4 h-[38px] w-auto brightness-0 invert opacity-90"
+            />
             <p className="font-display text-[19px] font-semibold tracking-[0.14em] text-cream-100">BARKYARD</p>
             <p className="mt-1 text-[11px] font-semibold uppercase tracking-[0.2em] text-accent-400">
               Ankara · {site.tagline}
