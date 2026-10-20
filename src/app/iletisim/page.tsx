@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { site, fullAddress } from "@/config/site";
-import { Container, Eyebrow, Section, WhatsAppButton } from "@/components/ui";
+import { Container, PageHero, Section, WhatsAppButton } from "@/components/ui";
 import { DirectionsTextLink, PhoneLink } from "@/components/ContactLinks";
 import ContactForm from "@/components/ContactForm";
 import MapBlock from "@/components/MapBlock";
@@ -17,55 +17,51 @@ export const metadata: Metadata = {
 export default function Page() {
   return (
     <>
-      <section className="border-b border-ink-900/8 bg-cream-100">
-        <Container className="py-14 sm:py-20">
-          <Eyebrow>İletişim</Eyebrow>
-          <h1 className="max-w-3xl text-4xl leading-[1.1] sm:text-5xl">Bize ulaşın</h1>
-          <p className="mt-6 max-w-2xl text-[17px] leading-relaxed text-ink-700 sm:text-lg">
-            En hızlı yol WhatsApp. Köpeğinizi ve ihtiyacınızı kısaca yazın; size uygun olup
-            olmadığımızı dürüstçe söyleyelim.
-          </p>
-        </Container>
-      </section>
+      <PageHero title="Bize ulaşın">
+        <p className="mt-7 max-w-[52ch] text-[18px] leading-[1.65] text-ink-700 sm:text-[19px]">
+          En hızlı yol WhatsApp. Köpeğinizi ve ihtiyacınızı kısaca yazın; size uygun olup
+          olmadığımızı dürüstçe söyleyelim.
+        </p>
+      </PageHero>
 
-      <Section tone="cream">
+      <Section tone="paper">
         <div className="grid gap-12 lg:grid-cols-[1fr_1.1fr]">
           {/* Bilgiler */}
           <div>
             <div className="space-y-8">
               <div>
-                <p className="text-[12px] font-semibold uppercase tracking-[0.16em] text-olive-600">Telefon</p>
+                <p className="font-display text-[20px] font-semibold text-ink-900">Telefon</p>
                 <p className="mt-2 text-2xl">
-                  <PhoneLink source="iletisim" className="hover:text-olive-600" />
+                  <PhoneLink source="iletisim" className="hover:text-lawn-600" />
                 </p>
               </div>
 
               <div>
-                <p className="text-[12px] font-semibold uppercase tracking-[0.16em] text-olive-600">WhatsApp</p>
+                <p className="font-display text-[20px] font-semibold text-ink-900">WhatsApp</p>
                 <div className="mt-3">
                   <WhatsAppButton context="hizmetleriniz" source="iletisim" />
                 </div>
               </div>
 
               <div>
-                <p className="text-[12px] font-semibold uppercase tracking-[0.16em] text-olive-600">E-posta</p>
+                <p className="font-display text-[20px] font-semibold text-ink-900">E-posta</p>
                 <p className="mt-2 text-[16px]">
-                  <a href={`mailto:${site.email}`} className="hover:text-olive-600">
+                  <a href={`mailto:${site.email}`} className="hover:text-lawn-600">
                     {site.email}
                   </a>
                 </p>
               </div>
 
               <div>
-                <p className="text-[12px] font-semibold uppercase tracking-[0.16em] text-olive-600">Adres</p>
+                <p className="font-display text-[20px] font-semibold text-ink-900">Adres</p>
                 <p className="mt-2 text-[16px] leading-relaxed text-ink-700">{fullAddress}</p>
-                <DirectionsTextLink className="mt-2 inline-block text-[15px] font-semibold text-olive-600 hover:underline">
-                  Yol tarifi alın →
+                <DirectionsTextLink className="mt-2 inline-block border-b-2 border-accent-400 text-[16px] font-semibold text-ink-900">
+                  Yol tarifi alın
                 </DirectionsTextLink>
               </div>
 
               <div>
-                <p className="text-[12px] font-semibold uppercase tracking-[0.16em] text-olive-600">Çalışma saatleri</p>
+                <p className="font-display text-[20px] font-semibold text-ink-900">Çalışma saatleri</p>
                 <ul className="mt-2 space-y-1 text-[16px] text-ink-700">
                   {site.hours.map((h) => (
                     <li key={h.days}>
@@ -73,7 +69,7 @@ export default function Page() {
                     </li>
                   ))}
                 </ul>
-                <p className="mt-3 text-[14px] text-ink-500">
+                <p className="mt-3 text-[15px] text-ink-500">
                   Tesis ziyaretleri randevuyla yapılır. Uygun günü önceden yazmanız yeterli.
                 </p>
               </div>
@@ -81,7 +77,7 @@ export default function Page() {
           </div>
 
           {/* Form */}
-          <div className="rounded-2xl border border-ink-900/10 bg-white p-7 sm:p-9">
+          <div className="rounded-lg border-2 border-ink-900/80 bg-white p-7 sm:p-9">
             <h2 className="text-2xl">Talep formu</h2>
             <p className="mt-2 mb-7 text-[15px] leading-relaxed text-ink-700">
               Dört alanı doldurun, gerisini biz soralım.
@@ -92,9 +88,9 @@ export default function Page() {
       </Section>
 
       {/* Harita */}
-      <section className="bg-cream-100 pb-16 sm:pb-20">
+      <section className="bg-paper-50 pb-16 sm:pb-20">
         <Container>
-          <div className="overflow-hidden rounded-2xl">
+          <div className="overflow-hidden rounded-lg">
             <MapBlock className="min-h-[260px]" />
           </div>
         </Container>

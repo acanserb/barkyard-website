@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { site } from "@/config/site";
-import { Container, CtaBlock, Eyebrow, Figure, H2, Lead, Section } from "@/components/ui";
+import { CtaBlock, Figure, H2, Lead, PageHero, Section } from "@/components/ui";
 import JsonLd from "@/components/JsonLd";
 import { breadcrumbSchema } from "@/lib/schema";
 
@@ -41,33 +41,26 @@ const principles = [
 export default function Page() {
   return (
     <>
-      <section className="border-b border-ink-900/8 bg-cream-100">
-        <Container className="py-14 sm:py-20">
-          <Eyebrow>Hakkımızda</Eyebrow>
-          <h1 className="max-w-3xl text-4xl leading-[1.1] sm:text-5xl">
-            Yeni bir marka, {new Date().getFullYear() - site.trainerSinceYear} yıllık bir eğitmen
-          </h1>
-          <p className="mt-6 max-w-2xl text-[17px] leading-relaxed text-ink-700 sm:text-lg">
-            Barkyard Ankara {site.foundedBrandYear} yılında kuruldu. Bunu saklamıyoruz — çünkü
-            güveni marka yaşıyla değil, gösterdiklerimizle kurmayı tercih ediyoruz. Burada çalışan
-            eğitmen {site.trainerSinceYear} yılından bu yana köpeklerle çalışıyor ve Barkyard, o
-            deneyimin kendi tesisinde sürdüğü yer.
-          </p>
-        </Container>
-      </section>
+      <PageHero title={<>Yeni bir marka, {new Date().getFullYear() - site.trainerSinceYear} yıllık bir eğitmen</>}>
+        <p className="mt-7 max-w-[56ch] text-[18px] leading-[1.65] text-ink-700 sm:text-[19px]">
+          Barkyard Ankara {site.foundedBrandYear} yılında kuruldu. Bunu saklamıyoruz, çünkü güveni
+          marka yaşıyla değil, gösterdiklerimizle kurmayı tercih ediyoruz. Burada çalışan eğitmen{" "}
+          {site.trainerSinceYear} yılından bu yana köpeklerle çalışıyor ve Barkyard, o deneyimin
+          kendi tesisinde sürdüğü yer.
+        </p>
+      </PageHero>
 
       {/* Eğitmen */}
-      <Section tone="cream">
+      <Section tone="paper">
         <div className="grid gap-10 lg:grid-cols-[1fr_1.1fr] lg:items-center">
           <Figure
             src="/images/ekip/egitmen.jpg"
             alt="Barkyard Ankara kurucu eğitmeni"
-            label="Kurucu eğitmen portresi — köpekle çalışırken"
+            label="Kurucu eğitmen portresi, köpekle çalışırken"
             sizes="(min-width: 1024px) 45vw, 100vw"
-            className="aspect-[4/5] rounded-2xl"
+            className="bk-arch aspect-[4/5] w-full max-w-[460px]"
           />
           <div>
-            <Eyebrow>Kurucu eğitmen</Eyebrow>
             {/* TODO: Eğitmenin adı, geçmişi, sertifikaları ve yaklaşımı buraya yazılacak. */}
             <H2>TODO: Eğitmen adı</H2>
             <Lead>
@@ -75,10 +68,10 @@ export default function Page() {
               hangi eğitimlerden geçtiği. Abartısız, birinci ağızdan ve somut yazılmalı. Doğrulanamayan
               hiçbir iddia (ödül, rakam, unvan) eklenmemeli.
             </Lead>
-            <ul className="mt-7 space-y-2.5 text-[15px] text-ink-700">
-              <li>• {site.trainerSinceYear} yılından bu yana köpeklerle çalışıyor</li>
-              <li>• TODO: Sertifika / eğitim bilgileri</li>
-              <li>• TODO: Uzmanlaştığı alan (davranış, itaat, rehabilitasyon vb.)</li>
+            <ul className="mt-7 space-y-2.5 text-[17px] text-ink-700">
+              <li>{site.trainerSinceYear} yılından bu yana köpeklerle çalışıyor</li>
+              <li>TODO: Sertifika / eğitim bilgileri</li>
+              <li>TODO: Uzmanlaştığı alan (davranış, itaat, rehabilitasyon vb.)</li>
             </ul>
           </div>
         </div>
@@ -86,7 +79,6 @@ export default function Page() {
 
       {/* İlkeler */}
       <Section tone="white">
-        <Eyebrow>Nasıl çalışıyoruz</Eyebrow>
         <H2>Altı ilke</H2>
         <Lead>
           Bunlar pazarlama cümlesi değil; her köpekte uyguladığımız çalışma kuralları. Uymadığımızı
@@ -94,20 +86,19 @@ export default function Page() {
         </Lead>
         <div className="mt-12 grid gap-x-10 gap-y-9 sm:grid-cols-2 lg:grid-cols-3">
           {principles.map((p) => (
-            <div key={p.title} className="border-t-2 border-ink-900/12 pt-5">
-              <h3 className="text-xl text-ink-900">{p.title}</h3>
-              <p className="mt-2.5 text-[15px] leading-relaxed text-ink-700">{p.text}</p>
+            <div key={p.title} className="border-t-2 border-ink-900/80 pt-5">
+              <h3 className="text-2xl text-ink-900">{p.title}</h3>
+              <p className="mt-3 text-[17px] leading-relaxed text-ink-700">{p.text}</p>
             </div>
           ))}
         </div>
       </Section>
 
       {/* Neden yeni bir marka */}
-      <Section tone="olive">
+      <Section tone="forest">
         <div className="max-w-3xl">
-          <Eyebrow light>Dürüst olmak gerekirse</Eyebrow>
-          <H2 className="text-cream-50">Neden yeni bir markaya güvenesiniz?</H2>
-          <p className="mt-6 text-[17px] leading-relaxed text-cream-200/85">
+          <H2 className="text-paper-50 sm:!text-6xl">Neden yeni bir markaya güvenesiniz?</H2>
+          <p className="mt-6 text-[19px] leading-relaxed text-paper-200/90">
             Güvenmenizi istemiyoruz. Kontrol etmenizi istiyoruz. Tesisi gezin, kalacağı alanı görün,
             eğitmenle konuşun, köpeğinizle bir seans yapın, sorularınızın nasıl cevaplandığına bakın.
             Köpeğinizi emanet etme kararı, bir web sitesine değil gördüklerinize dayanmalı — burada

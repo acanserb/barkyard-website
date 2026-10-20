@@ -25,32 +25,36 @@ export default function Header() {
   ];
 
   return (
-    <header className="sticky top-0 z-40 border-b border-ink-900/8 bg-cream-50/92 backdrop-blur-md">
-      <Container>
-        <div className="flex h-[68px] items-center justify-between gap-6">
+    <header className="sticky top-3 z-40 px-3 sm:px-6">
+      <div className="mx-auto max-w-[1180px] rounded-[2rem] bg-white/90 shadow-[0_2px_24px_rgba(30,42,36,0.08)] backdrop-blur-md">
+      <Container className="!px-5">
+        <div className="flex h-[62px] items-center justify-between gap-4">
           <Link href="/" className="flex items-center gap-3" onClick={() => setOpen(false)} aria-label="Barkyard Ankara ana sayfa">
             <Image
               src="/images/marka/barkyard-mark.svg"
               alt=""
-              width={34}
-              height={37}
+              width={36}
+              height={39}
               priority
-              className="h-[34px] w-auto"
+              className="h-[36px] w-auto"
             />
-            <span className="font-display text-[19px] font-semibold tracking-[0.14em] text-ink-900">
+            <span className="font-display text-[22px] font-extrabold tracking-[0.06em] text-ink-900">
               BARKYARD
             </span>
           </Link>
 
-          <nav className="hidden items-center gap-5 lg:flex xl:gap-6" aria-label="Ana menü">
+          <nav className="hidden items-center gap-1 lg:flex" aria-label="Ana menü">
             {nav.map((item) => {
               const active = pathname === item.href;
               return (
                 <Link
                   key={item.href}
                   href={item.href}
-                  className={`whitespace-nowrap text-[14px] transition-colors ${
-                    active ? "font-semibold text-ink-900" : "text-ink-700 hover:text-ink-900"
+                  aria-current={active ? "page" : undefined}
+                  className={`whitespace-nowrap rounded-full px-3 py-1.5 text-[15px] transition-colors ${
+                    active
+                      ? "bg-paper-200 font-semibold text-ink-900"
+                      : "text-ink-700 hover:bg-paper-200"
                   }`}
                 >
                   {item.label}
@@ -65,7 +69,7 @@ export default function Header() {
                 context="hizmetleriniz"
                 label="WhatsApp"
                 source="header"
-                className="!px-5 !py-2.5 !text-[14px]"
+                className="!px-5 !py-2.5 !text-[15px]"
               />
             </span>
             <button
@@ -73,10 +77,10 @@ export default function Header() {
               onClick={() => setOpen((v) => !v)}
               aria-expanded={open}
               aria-label="Menü"
-              className="flex h-10 w-10 items-center justify-center rounded-full border border-ink-900/15 lg:hidden"
+              className="flex h-11 w-11 items-center justify-center rounded-full border-2 border-ink-900/70 lg:hidden"
             >
               <span className="sr-only">Menü</span>
-              <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="1.8">
+              <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="2">
                 {open ? (
                   <path d="M6 6l12 12M18 6L6 18" strokeLinecap="round" />
                 ) : (
@@ -89,7 +93,7 @@ export default function Header() {
       </Container>
 
       {open && (
-        <div className="border-t border-ink-900/8 bg-cream-50 lg:hidden">
+        <div className="border-t border-ink-900/10 lg:hidden">
           <Container>
             <nav className="flex flex-col py-3" aria-label="Mobil menü">
               {nav.map((item) => (
@@ -97,18 +101,19 @@ export default function Header() {
                   key={item.href}
                   href={item.href}
                   onClick={() => setOpen(false)}
-                  className="border-b border-ink-900/6 py-3.5 text-[15px] text-ink-700 last:border-0"
+                  className="border-b border-ink-900/8 py-4 font-display text-[22px] font-semibold text-ink-900 last:border-0"
                 >
                   {item.label}
                 </Link>
               ))}
-              <p className="py-4 text-[13px] text-ink-500">
-                {site.hours[0].days} · {site.hours[0].time}
+              <p className="py-4 text-[15px] text-ink-500">
+                {site.hours[0].days}, {site.hours[0].time}
               </p>
             </nav>
           </Container>
         </div>
       )}
+      </div>
     </header>
   );
 }

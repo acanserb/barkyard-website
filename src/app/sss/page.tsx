@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { Container, CtaBlock, Eyebrow, Section } from "@/components/ui";
+import { CtaBlock, PageHero, Section } from "@/components/ui";
 import { services } from "@/content/services";
 import { homeFaq } from "@/content/home";
 import Faq, { faqSchema } from "@/components/Faq";
@@ -10,7 +10,7 @@ import { breadcrumbSchema } from "@/lib/schema";
 export const metadata: Metadata = {
   title: "Sık Sorulan Sorular",
   description:
-    "Barkyard Ankara hakkında sık sorulan sorular: aşı koşulları, fiyatlandırma, konaklama düzeni, eğitim süreci ve tesis ziyareti.",
+    "Barkyard Ankara hakkında sık sorulan sorular: aşı koşulları, konaklama düzeni, eğitim süreci ve tesis ziyareti.",
   alternates: { canonical: "/sss/" },
 };
 
@@ -19,29 +19,23 @@ const allFaq = [...homeFaq, ...services.flatMap((s) => s.faq)];
 export default function Page() {
   return (
     <>
-      <section className="border-b border-ink-900/8 bg-cream-100">
-        <Container className="py-14 sm:py-20">
-          <Eyebrow>Sık sorulan sorular</Eyebrow>
-          <h1 className="max-w-3xl text-4xl leading-[1.1] sm:text-5xl">
-            Yazmadan önce cevabını bulun
-          </h1>
-          <p className="mt-6 max-w-2xl text-[17px] leading-relaxed text-ink-700 sm:text-lg">
-            Aradığınız cevap burada yoksa WhatsApp&apos;tan yazın — sorunuz bu listeye de eklenir.
-          </p>
-        </Container>
-      </section>
+      <PageHero title="Yazmadan önce cevabını bulun">
+        <p className="mt-7 max-w-[52ch] text-[18px] leading-[1.65] text-ink-700 sm:text-[19px]">
+          Aradığınız cevap burada yoksa WhatsApp&apos;tan yazın. Sorunuz bu listeye de eklenir.
+        </p>
+      </PageHero>
 
-      <Section tone="cream">
-        <h2 className="text-2xl">Genel</h2>
+      <Section tone="paper">
+        <h2 className="text-3xl sm:text-4xl">Genel</h2>
         <Faq items={homeFaq} className="mt-6" />
       </Section>
 
       {services.map((s, i) => (
-        <Section key={s.slug} tone={i % 2 === 0 ? "white" : "cream"}>
+        <Section key={s.slug} tone={i % 2 === 0 ? "white" : "paper"}>
           <div className="flex flex-wrap items-baseline justify-between gap-3">
-            <h2 className="text-2xl">{s.cardTitle}</h2>
-            <Link href={`/${s.slug}/`} className="text-[14px] font-semibold text-olive-600 hover:underline">
-              {s.navLabel} sayfası →
+            <h2 className="text-3xl sm:text-4xl">{s.cardTitle}</h2>
+            <Link href={`/${s.slug}/`} className="border-b-2 border-accent-400 text-[16px] font-semibold text-ink-900">
+              {s.navLabel} sayfası
             </Link>
           </div>
           <Faq items={s.faq} className="mt-6" />

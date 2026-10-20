@@ -23,7 +23,6 @@ export type Service = {
   processTitle: string;
   process: { step: string; text: string }[];
   conditions: string[];
-  pricingNote: string[];
   faq: FaqItem[];
 };
 
@@ -75,11 +74,6 @@ export const services: Service[] = [
       "Aşı ve iç/dış parazit uygulamaları güncel olmalıdır",
       "Karne veya veteriner kaydı ilk gelişte görülür",
       "Kısırlaştırma zorunlu değildir; kızgınlık dönemindeki dişiler için program tarihi birlikte planlanır",
-    ],
-    pricingNote: [
-      "Eğitim programının ücreti sabit bir liste üzerinden verilmez, çünkü iki köpeğin ihtiyacı aynı değildir.",
-      "Ücreti belirleyen kalemler: programın süresi ve seans sayısı, çalışmanın tesiste mi yoksa kısmen evinizde mi yürütüleceği, köpeğin mevcut davranış durumu ve program sonrası takip seanslarının sayısı.",
-      "Ön görüşmenin ardından size tek bir net rakam ve neyin dahil olduğunu yazılı olarak iletiriz. Sonradan eklenen kalem olmaz.",
     ],
     faq: [
       { q: "Eğitim ne kadar sürer?", a: "Programın süresi köpeğin mevcut durumuna ve hedefe göre değişir. Temel itaat çalışmaları genellikle haftalar ölçeğinde ilerler; davranış problemleri daha uzun sürebilir. Ön görüşmede size gerçekçi bir süre söyleriz — kesin gün sayısı vaat eden yaklaşımlara temkinli yaklaşın." },
@@ -138,11 +132,6 @@ export const services: Service[] = [
       "Köpeğinizin alıştığı mama ile gelmesi, mide düzeninin bozulmaması için önerilir",
       "Düzenli kullandığı ilaç varsa dozu ve saatiyle birlikte yazılı olarak bildirilmelidir",
     ],
-    pricingNote: [
-      "Konaklama ücreti sabit tek bir rakam değildir; günlük fiyat konaklamanın koşullarına göre belirlenir.",
-      "Ücreti belirleyen kalemler: konaklama süresi, köpeğin bedeni ve ihtiyaç duyduğu alan, bireysel mi grup düzeninde mi kalacağı, özel beslenme veya ilaç takibi gerekip gerekmediği ve konaklama sırasında eğitim desteği istenip istenmediği.",
-      "Tarihleri yazdığınızda net günlük ücreti ve toplam tutarı önceden bildiririz.",
-    ],
     faq: [
       { q: "Köpeğim nerede uyuyor?", a: "Her köpeğin kendi ayrılmış alanı vardır; grup düzeninde ortak alan kullanımı köpeklerin uyumuna göre belirlenir. Kalacağı yeri konaklamadan önce yerinde görebilirsiniz." },
       { q: "Günde ne kadar dışarı çıkıyor?", a: "Günlük akışta en az iki açık alan seansı vardır. Süre havaya, köpeğin enerjisine ve grubun durumuna göre değişir." },
@@ -199,11 +188,6 @@ export const services: Service[] = [
       "Aşılar ve parazit uygulamaları güncel olmalıdır",
       "Grup ortamına uyum, deneme günündeki gözlemle belirlenir",
       "Bırakma ve alma saatleri çalışma saatleri içinde planlanır",
-    ],
-    pricingNote: [
-      "Gündüz bakım ücreti günlük olarak belirlenir ve düzenli gelen köpekler için haftalık paket mantığıyla çalışır.",
-      "Ücreti belirleyen kalemler: haftada kaç gün geleceği, kalış süresi (yarım gün / tam gün), köpeğin bireysel ilgi ihtiyacı ve gün içinde ek çalışma istenip istenmediği.",
-      "Deneme günü sonrasında size uygun düzeni ve net ücreti birlikte belirleriz.",
     ],
     faq: [
       { q: "Köpeğimi gezdirme hizmetiniz var mı?", a: "Gündüz bakım kapsamında köpeğiniz gün içinde düzenli olarak açık alanda hareket eder ve yürüyüşe çıkarılır. Şehir içinde eve gelip alma şeklinde ayrı bir gezdirme hizmeti vermiyoruz; ihtiyacınız buysa gündüz bakım düzeni çoğu durumda daha iyi sonuç veriyor." },
@@ -262,11 +246,6 @@ export const services: Service[] = [
       "Veteriner değerlendirmesi istenebilir ve bu adım atlanmaz",
       "Aşılar güncel olmalıdır",
       "Sahibin sürece katılımı zorunludur",
-    ],
-    pricingNote: [
-      "Rehabilitasyon için standart bir fiyat listesi vermiyoruz. Köpeği görmeden verilen rakam, gerçekçi olmayan bir plan anlamına gelir.",
-      "Ücreti belirleyen kalemler: davranışın türü ve şiddeti, gereken seans sayısı ve sıklığı, çalışmanın nerede yürütüleceği (tesis, ev, dış ortam) ve uzun dönem takip ihtiyacı.",
-      "Değerlendirme sonrasında size gerçekçi bir süre, plan ve net bir ücret sunulur.",
     ],
     faq: [
       { q: "Saldırgan köpeğim düzelir mi?", a: "\"Düzelir\" kelimesi bu alanda yanıltıcıdır. Çoğu vakada davranışın şiddeti ve sıklığı belirgin şekilde azalır ve durum yönetilebilir hale gelir. Ancak tetikleyicinin tamamen ortadan kalkacağını kimse dürüstçe söyleyemez. Değerlendirmeden sonra size gerçekçi beklentiyi anlatırız." },

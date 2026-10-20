@@ -3,33 +3,36 @@
 import Image from "next/image";
 import Link from "next/link";
 import type { ReactNode } from "react";
-import { hasImage } from "@/lib/media";
+import { hasImage, isStock, resolveImage } from "@/lib/media";
 import { track } from "@/lib/track";
 import { site, telLink, whatsappLink } from "@/config/site";
 
 /* ---------- Yerleşim ---------- */
 
 export function Container({ children, className = "" }: { children: ReactNode; className?: string }) {
-  return <div className={`mx-auto w-full max-w-6xl px-5 sm:px-8 ${className}`}>{children}</div>;
+  return <div className={`mx-auto w-full max-w-[1200px] px-5 sm:px-8 ${className}`}>{children}</div>;
 }
+
+type Tone = "paper" | "white" | "sky" | "forest";
+
+const tones: Record<Tone, string> = {
+  paper: "bg-paper-50 text-ink-900",
+  white: "bg-white text-ink-900",
+  sky: "bg-sky-100 text-ink-900",
+  forest: "on-dark bg-forest-800 text-paper-100",
+};
 
 export function Section({
   children,
   className = "",
-  tone = "cream",
+  tone = "paper",
   id,
 }: {
   children: ReactNode;
   className?: string;
-  tone?: "cream" | "white" | "ink" | "olive";
+  tone?: Tone;
   id?: string;
 }) {
-  const tones = {
-    cream: "bg-cream-50 text-ink-900",
-    white: "bg-white text-ink-900",
-    ink: "bg-ink-900 text-cream-100",
-    olive: "bg-olive-800 text-cream-100",
-  };
   return (
     <section id={id} className={`${tones[tone]} py-16 sm:py-24 ${className}`}>
       <Container>{children}</Container>
@@ -37,20 +40,54 @@ export function Section({
   );
 }
 
+/** Başlık üstü kısa not. Büyük harf değil, cümle düzeni. */
 export function Eyebrow({ children, light = false }: { children: ReactNode; light?: boolean }) {
   return (
-    <p className={`mb-3 text-xs font-semibold uppercase tracking-[0.18em] ${light ? "text-accent-400" : "text-olive-600"}`}>
+    <p className={`mb-3 text-[15px] font-semibold ${light ? "text-accent-400" : "text-lawn-600"}`}>
       {children}
     </p>
   );
 }
 
 export function H2({ children, className = "" }: { children: ReactNode; className?: string }) {
-  return <h2 className={`text-3xl leading-tight sm:text-4xl ${className}`}>{children}</h2>;
+  return <h2 className={`text-[2rem] sm:text-5xl ${className}`}>{children}</h2>;
 }
 
 export function Lead({ children, className = "" }: { children: ReactNode; className?: string }) {
-  return <p className={`mt-5 max-w-2xl text-[17px] leading-relaxed text-ink-700 sm:text-lg ${className}`}>{children}</p>;
+  return <p className={`mt-5 max-w-[56ch] text-[18px] leading-[1.65] text-ink-700 ${className}`}>{children}</p>;
+}
+
+/** Sayfa üstü başlık bloğu (iç sayfalar) */
+export function PageHero({
+  title,
+  children,
+  eyebrow,
+}: {
+  title: ReactNode;
+  children?: ReactNode;
+  eyebrow?: ReactNode;
+}) {
+  return (
+    <section className="relative overflow-hidden bg-sky-100">
+      <Container className="py-14 sm:py-20">
+        {eyebrow}
+        <h1 className="max-w-[18ch] text-[2.5rem] sm:text-6xl lg:text-[4.25rem]">{title}</h1>
+        {children}
+      </Container>
+      {/* Kemer konturu — yalnızca büyük ekranda, dekor */}
+      <svg
+        aria-hidden="true"
+        viewBox="0 0 200 260"
+        className="pointer-events-none absolute -bottom-6 right-[6%] hidden h-[110%] w-auto text-forest-800/10 lg:block"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="3"
+      >
+        <path d="M10 260V100a90 90 0 0 1 180 0v160" />
+        <path d="M34 260V104a66 66 0 0 1 132 0v156" />
+      </svg>
+    </section>
+  );
 }
 
 /* ---------- Görsel ---------- */
@@ -73,17 +110,25 @@ export function Figure({
 }) {
   if (hasImage(src)) {
     return (
-      <div className={`relative overflow-hidden bg-cream-200 ${className}`}>
-        <Image src={src} alt={alt} fill sizes={sizes} priority={priority} className="object-cover" />
+      <div className={`relative overflow-hidden bg-paper-200 ${className}`}>
+        <Image
+          src={resolveImage(src)!}
+          alt={alt}
+          fill
+          sizes={sizes}
+          priority={priority}
+          unoptimized={isStock(src)}
+          className="object-cover"
+        />
       </div>
     );
   }
   return (
     <div
-      className={`bk-placeholder relative flex items-center justify-center overflow-hidden border border-dashed border-ink-500/25 ${className}`}
+      className={`bk-placeholder relative flex items-end overflow-hidden ${className}`}
       aria-hidden="true"
     >
-      <span className="px-6 text-center text-[11px] font-medium uppercase tracking-[0.14em] text-ink-500">
+      <span className="m-4 rounded-full bg-white/80 px-3.5 py-1.5 text-[13px] font-medium text-ink-700 backdrop-blur-sm">
         {label ?? alt}
       </span>
     </div>
@@ -95,18 +140,18 @@ export function Figure({
 type ActionProps = { context: string; label?: string; className?: string; source?: string };
 
 const baseBtn =
-  "inline-flex items-center justify-center gap-2 rounded-full px-7 py-3.5 text-[15px] font-semibold transition-colors duration-150";
+  "inline-flex items-center justify-center gap-2 rounded-full px-7 py-3.5 text-[16px] font-semibold transition-colors duration-150";
 
-export function WhatsAppButton({ context, label = "WhatsApp'tan bilgi alın", className = "", source = "" }: ActionProps) {
+export function WhatsAppButton({ context, label = "WhatsApp'tan yazın", className = "", source = "" }: ActionProps) {
   return (
     <a
       href={whatsappLink(context)}
       target="_blank"
       rel="noopener noreferrer"
       onClick={() => track("whatsapp_click", { cta_context: context, cta_source: source })}
-      className={`${baseBtn} bg-accent-400 text-ink-900 hover:bg-accent-500 ${className}`}
+      className={`${baseBtn} bg-accent-400 text-ink-900 hover:bg-accent-300 ${className}`}
     >
-      <WhatsAppIcon className="h-[18px] w-[18px]" />
+      <WhatsAppIcon className="h-[19px] w-[19px]" />
       {label}
     </a>
   );
@@ -117,9 +162,9 @@ export function PhoneButton({ label, className = "", source = "" }: { label?: st
     <a
       href={telLink}
       onClick={() => track("phone_click", { cta_source: source })}
-      className={`${baseBtn} border border-ink-900/20 bg-transparent text-ink-900 hover:bg-ink-900 hover:text-cream-100 ${className}`}
+      className={`${baseBtn} border-2 border-ink-900/80 bg-transparent text-ink-900 hover:bg-ink-900 hover:text-paper-50 ${className}`}
     >
-      <PhoneIcon className="h-[17px] w-[17px]" />
+      <PhoneIcon className="h-[18px] w-[18px]" />
       {label ?? site.phoneDisplay}
     </a>
   );
@@ -127,7 +172,10 @@ export function PhoneButton({ label, className = "", source = "" }: { label?: st
 
 export function GhostButton({ href, children, className = "" }: { href: string; children: ReactNode; className?: string }) {
   return (
-    <Link href={href} className={`${baseBtn} border border-ink-900/20 text-ink-900 hover:bg-ink-900 hover:text-cream-100 ${className}`}>
+    <Link
+      href={href}
+      className={`${baseBtn} border-2 border-ink-900/80 text-ink-900 hover:bg-ink-900 hover:text-paper-50 ${className}`}
+    >
       {children}
     </Link>
   );
@@ -147,11 +195,20 @@ export function DirectionsLink({ children, className = "" }: { children: ReactNo
   );
 }
 
+/** Kartın içindeki "Ayrıntılar" bağlantısı: altı çizili, ok yok */
+export function TextLink({ children }: { children: ReactNode }) {
+  return (
+    <span className="inline-block border-b-2 border-accent-400 pb-0.5 text-[16px] font-semibold text-ink-900 transition-colors group-hover:border-ink-900">
+      {children}
+    </span>
+  );
+}
+
 /* ---------- Kapanış CTA bloğu ---------- */
 
 export function CtaBlock({
-  title = "Köpeğiniz için doğru yer mi, birlikte bakalım",
-  text = "Köpeğinizi ve ihtiyacınızı yazın. Size uygun olup olmadığımızı dürüstçe söyleyelim — uygun değilse de söyleriz.",
+  title = "Köpeğiniz için doğru yer miyiz, birlikte bakalım",
+  text = "Köpeğinizi ve ihtiyacınızı yazın. Size uygun olup olmadığımızı dürüstçe söyleyelim. Uygun değilsek bunu da söyleriz.",
   context = "hizmetleriniz",
   source = "cta_block",
 }: {
@@ -161,28 +218,30 @@ export function CtaBlock({
   source?: string;
 }) {
   return (
-    <Section tone="ink">
-      <div className="grid items-center gap-10 md:grid-cols-[1.2fr_1fr]">
-        <div>
-          <H2 className="text-cream-100">{title}</H2>
-          <p className="mt-5 max-w-xl text-[17px] leading-relaxed text-cream-200/85">{text}</p>
+    <section className="on-dark relative overflow-hidden bg-forest-900 py-20 text-paper-100 sm:py-28">
+      <Container>
+        <div className="grid items-end gap-10 md:grid-cols-[1.4fr_1fr]">
+          <div>
+            <h2 className="max-w-[16ch] text-[2.5rem] text-paper-50 sm:text-6xl">{title}</h2>
+            <p className="mt-6 max-w-[52ch] text-[18px] leading-relaxed text-paper-200/85">{text}</p>
+          </div>
+          <div className="flex flex-col gap-3">
+            <WhatsAppButton context={context} source={source} className="w-full" />
+            <a
+              href={telLink}
+              onClick={() => track("phone_click", { cta_source: source })}
+              className={`${baseBtn} w-full border-2 border-paper-100/40 text-paper-50 hover:bg-paper-50 hover:text-ink-900`}
+            >
+              <PhoneIcon className="h-[18px] w-[18px]" />
+              {site.phoneDisplay}
+            </a>
+            <p className="mt-1 text-[15px] text-paper-200/70">
+              {site.hours[0].days}, {site.hours[0].time}
+            </p>
+          </div>
         </div>
-        <div className="flex flex-col gap-3">
-          <WhatsAppButton context={context} source={source} className="w-full" />
-          <a
-            href={telLink}
-            onClick={() => track("phone_click", { cta_source: source })}
-            className={`${baseBtn} w-full border border-cream-100/25 text-cream-100 hover:bg-cream-100 hover:text-ink-900`}
-          >
-            <PhoneIcon className="h-[17px] w-[17px]" />
-            {site.phoneDisplay}
-          </a>
-          <p className="mt-1 text-center text-[13px] text-cream-200/60">
-            {site.hours[0].days} · {site.hours[0].time}
-          </p>
-        </div>
-      </div>
-    </Section>
+      </Container>
+    </section>
   );
 }
 

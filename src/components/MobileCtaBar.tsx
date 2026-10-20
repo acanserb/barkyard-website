@@ -21,7 +21,7 @@ export default function MobileCtaBar({ context = "hizmetleriniz" }: { context?: 
 
   return (
     <div
-      className={`fixed inset-x-0 bottom-0 z-50 border-t border-ink-900/10 bg-cream-50/97 backdrop-blur-md transition-transform duration-200 lg:hidden ${
+      className={`fixed inset-x-0 bottom-0 z-50 border-t border-ink-900/15 bg-paper-50/97 backdrop-blur-md transition-transform duration-200 lg:hidden ${
         visible ? "translate-y-0" : "translate-y-full"
       }`}
       style={{ paddingBottom: "env(safe-area-inset-bottom)" }}
@@ -32,7 +32,7 @@ export default function MobileCtaBar({ context = "hizmetleriniz" }: { context?: 
           target="_blank"
           rel="noopener noreferrer"
           onClick={() => track("whatsapp_click", { cta_context: context, cta_source: "mobile_bar" })}
-          className="flex flex-1 items-center justify-center gap-2 rounded-full bg-accent-400 py-3 text-[15px] font-semibold text-ink-900"
+          className="flex flex-1 items-center justify-center gap-2 rounded-full bg-accent-400 py-3 text-[16px] font-semibold text-ink-900"
         >
           <WhatsAppIcon className="h-[18px] w-[18px]" />
           WhatsApp
@@ -41,7 +41,7 @@ export default function MobileCtaBar({ context = "hizmetleriniz" }: { context?: 
           href={telLink}
           onClick={() => track("phone_click", { cta_source: "mobile_bar" })}
           aria-label={`Telefonla ara: ${site.phoneDisplay}`}
-          className="flex h-[46px] w-[46px] shrink-0 items-center justify-center rounded-full border border-ink-900/20 text-ink-900"
+          className="flex h-[46px] w-[46px] shrink-0 items-center justify-center rounded-full border-2 border-ink-900/70 text-ink-900"
         >
           <PhoneIcon className="h-5 w-5" />
         </a>

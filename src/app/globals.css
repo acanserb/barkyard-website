@@ -1,34 +1,48 @@
 @import "tailwindcss";
 
 /* ============================================================
-   BARKYARD ANKARA — MARKA SİSTEMİ
-   Logodan türetilmiştir. Renk eklemeden önce buraya bakın.
+   BARKYARD ANKARA — TASARIM SİSTEMİ (v2)
+
+   Renkler tesisin kendi fotoğrafından ve logodan türetildi:
+   çimen yeşili, gökyüzü, tuğla/terracotta cephe, logodaki sarı.
+   Renk eklemeden önce buraya bakın.
    ============================================================ */
 
 @theme {
-  /* Zemin — kirli beyaz / krem */
-  --color-cream-50: #fdfaf7;
-  --color-cream-100: #f8f2ea;
-  --color-cream-200: #efe6da;
-  --color-cream-300: #e2d5c4;
+  /* Zemin — hafif yeşilimsi, soğuk beyaz (krem değil) */
+  --color-paper-50: #f3f5f0;
+  --color-paper-100: #e9eee4;
+  --color-paper-200: #dde8d3;
+  --color-paper-300: #c9d8bc;
 
-  /* Mürekkep — logodaki antrasit */
-  --color-ink-500: #6b6a63;
-  --color-ink-700: #3d3d37;
-  --color-ink-900: #26261f;
+  /* Gökyüzü — ikinci zemin tonu */
+  --color-sky-100: #d6e6f2;
+  --color-sky-200: #c4dbe9;
 
-  /* Zeytin — ikincil, doğal */
-  --color-olive-400: #8a9479;
-  --color-olive-600: #5a6650;
-  --color-olive-800: #3a422f;
+  /* Metin */
+  --color-ink-500: #5b6a61;
+  --color-ink-700: #34423a;
+  --color-ink-900: #1e2a24;
 
-  /* Sarı — yalnızca CTA ve küçük vurgu. Zemin olarak kullanmayın. */
-  --color-accent-300: #f7e9a0;
-  --color-accent-400: #f2de7e;
-  --color-accent-500: #e6cd5c;
+  /* Çimen — ikincil vurgu, bağlantılar */
+  --color-lawn-400: #8db06a;
+  --color-lawn-600: #2f5d46;
 
-  --font-display: var(--font-fraunces), Georgia, serif;
-  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  /* Koyu yüzeyler */
+  --color-forest-700: #2f4a3c;
+  --color-forest-800: #1e2a24;
+  --color-forest-900: #17211c;
+
+  /* Tuğla — binanın cephesi; yalnızca küçük detaylarda */
+  --color-brick-500: #b2512c;
+
+  /* Güneş sarısı — logodaki sarı. CTA ve tek vurgu. */
+  --color-accent-300: #fbefb5;
+  --color-accent-400: #f6df6a;
+  --color-accent-500: #e8c93f;
+
+  --font-display: var(--font-outfit), "Segoe UI", system-ui, sans-serif;
+  --font-sans: var(--font-outfit), "Segoe UI", system-ui, sans-serif;
 }
 
 :root {
@@ -41,18 +55,21 @@ html {
 }
 
 body {
-  background-color: var(--color-cream-50);
+  background-color: var(--color-paper-50);
   color: var(--color-ink-900);
   font-family: var(--font-sans);
+  font-size: 17px;
+  line-height: 1.6;
   -webkit-font-smoothing: antialiased;
-  /* Mobilde sabit CTA çubuğunun içeriği kapatmaması için */
   padding-bottom: env(safe-area-inset-bottom);
 }
 
+/* Başlıklar: Bricolage Grotesque — dar, sıkı, karakterli */
 h1, h2, h3, h4 {
   font-family: var(--font-display);
-  font-weight: 600;
-  letter-spacing: -0.015em;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  line-height: 1.04;
   text-wrap: balance;
 }
 
@@ -67,27 +84,59 @@ p {
 
 /* Klavye erişilebilirliği */
 :focus-visible {
-  outline: 2px solid var(--color-olive-600);
+  outline: 3px solid var(--color-lawn-600);
   outline-offset: 3px;
-  border-radius: 2px;
+  border-radius: 4px;
+}
+.on-dark :focus-visible {
+  outline-color: var(--color-accent-400);
+}
+
+/* ------------------------------------------------------------
+   Kemer — tesis binasının pencerelerinden gelen tek motif.
+   Fotoğraf çerçevesi ve ince kontur olarak kullanılır.
+   ------------------------------------------------------------ */
+.bk-arch {
+  border-top-left-radius: 999px;
+  border-top-right-radius: 999px;
+}
+
+/* Fotoğraf yerleştirilmemiş alanlar */
+.bk-placeholder {
+  background-color: var(--color-paper-200);
+  background-image:
+    radial-gradient(circle at 20% 15%, rgba(141, 176, 106, 0.28), transparent 55%),
+    radial-gradient(circle at 85% 90%, rgba(207, 227, 239, 0.7), transparent 50%);
+}
+
+/* ------------------------------------------------------------
+   Tek koreografi: açılışta kemer çerçevesi alttan açılır,
+   sarı etiket bir kez sallanır. Başka giriş animasyonu yok.
+   ------------------------------------------------------------ */
+@keyframes bk-reveal {
+  from { clip-path: inset(100% 0 0 0); }
+  to   { clip-path: inset(0 0 0 0); }
+}
+@keyframes bk-swing {
+  0%   { transform: rotate(-9deg); }
+  35%  { transform: rotate(4deg); }
+  65%  { transform: rotate(-4deg); }
+  100% { transform: rotate(-2deg); }
+}
+.bk-hero-photo {
+  animation: bk-reveal 1100ms cubic-bezier(0.2, 0.7, 0.1, 1) both;
+}
+.bk-hang-tag {
+  transform-origin: 50% 0;
+  animation: bk-swing 1500ms ease-out 700ms both;
 }
 
 /* Hareket tercihine saygı */
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
     animation-duration: 0.01ms !important;
+    animation-delay: 0ms !important;
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
   }
-}
-
-/* Görsel yerleştirilmemiş alanlar için placeholder deseni.
-   Gerçek fotoğraflar eklendiğinde bu sınıf kendiliğinden devre dışı kalır. */
-.bk-placeholder {
-  background-color: var(--color-cream-200);
-  background-image:
-    linear-gradient(45deg, rgba(0,0,0,0.03) 25%, transparent 25%, transparent 75%, rgba(0,0,0,0.03) 75%),
-    linear-gradient(45deg, rgba(0,0,0,0.03) 25%, transparent 25%, transparent 75%, rgba(0,0,0,0.03) 75%);
-  background-size: 24px 24px;
-  background-position: 0 0, 12px 12px;
 }

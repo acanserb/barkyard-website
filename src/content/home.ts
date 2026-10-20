@@ -39,7 +39,7 @@ export const howWeWork = [
   },
   {
     title: "Size özel program",
-    text: "Hazır paket satmıyoruz. Süre, içerik ve çalışma biçimi köpeğin durumuna göre belirlenir ve neyin dahil olduğu yazılı olarak iletilir.",
+    text: "Hazır kalıplarla çalışmıyoruz. Süre, içerik ve çalışma biçimi köpeğin durumuna göre belirlenir ve neyin yapılacağı yazılı olarak iletilir.",
   },
   {
     title: "Süreç boyunca bilgi",
@@ -53,10 +53,6 @@ export const homeFaq: FaqItem[] = [
     a: "Evet, gezmenizi özellikle istiyoruz. Randevu alın, köpeğinizle birlikte gelin, kalacağı veya çalışacağı alanı yerinde görün. Köpeğinizi göremediğiniz bir yere bırakmayın — bu bizim için de geçerli bir kural.",
   },
   {
-    q: "Fiyatlarınız neden sitede yazmıyor?",
-    a: "Çünkü iki köpeğin ihtiyacı aynı değil ve tek bir liste fiyatı vermek yanıltıcı olur. Bunun yerine her hizmet sayfasında ücreti neyin belirlediğini açıkça yazıyoruz. Yazdığınızda veya aradığınızda size net bir rakam ve neyin dahil olduğunu iletiyoruz; sonradan eklenen kalem olmuyor.",
-  },
-  {
     q: "Köpeğimin aşıları eksik, kabul ediyor musunuz?",
     a: "Hayır. Aşı ve parazit uygulamalarının güncel olması, tesisteki tüm köpeklerin sağlığı için zorunlu. Aşı takvimi devam ediyorsa uygun tarihi birlikte planlarız.",
   },
@@ -66,6 +62,6 @@ export const homeFaq: FaqItem[] = [
   },
   {
     q: "Köpek gezdirme hizmetiniz var mı?",
-    a: "Şehir içinde eve gelip köpek alma şeklinde ayrı bir gezdirme hizmeti vermiyoruz. Köpeğinizin düzenli hareket ihtiyacı için gündüz bakım düzeni çoğu durumda hem daha verimli hem daha ekonomik oluyor.",
+    a: "Şehir içinde eve gelip köpek alma şeklinde ayrı bir gezdirme hizmeti vermiyoruz. Köpeğinizin düzenli hareket ihtiyacı için gündüz bakım düzeni çoğu durumda daha verimli oluyor.",
   },
 ];

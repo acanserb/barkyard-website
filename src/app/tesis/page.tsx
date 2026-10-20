@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { site, fullAddress } from "@/config/site";
-import { Container, CtaBlock, Eyebrow, Figure, H2, Lead, Section } from "@/components/ui";
+import { CtaBlock, Figure, H2, Lead, PageHero, Section } from "@/components/ui";
 import { DirectionsTextLink } from "@/components/ContactLinks";
 import MapBlock from "@/components/MapBlock";
 import JsonLd from "@/components/JsonLd";
@@ -51,23 +51,17 @@ const areas = [
 export default function Page() {
   return (
     <>
-      <section className="border-b border-ink-900/8 bg-cream-100">
-        <Container className="py-14 sm:py-20">
-          <Eyebrow>Tesisimiz</Eyebrow>
-          <h1 className="max-w-3xl text-4xl leading-[1.1] sm:text-5xl">
-            Köpeğinizi bırakacağınız yeri görmeden karar vermeyin
-          </h1>
-          <p className="mt-6 max-w-2xl text-[17px] leading-relaxed text-ink-700 sm:text-lg">
-            Bu sayfadaki fotoğraflar tesisin kendisine ait. Yine de yerinde görmenizi öneriyoruz —
-            fotoğraf, bir köpeğin o alanda nasıl hareket ettiğini göstermez. Randevu alın,
-            köpeğinizle birlikte gelin.
-          </p>
-          <p className="mt-6 text-[15px] text-ink-500">{fullAddress}</p>
-        </Container>
-      </section>
+      <PageHero title="Köpeğinizi bırakacağınız yeri görmeden karar vermeyin">
+        <p className="mt-7 max-w-[56ch] text-[18px] leading-[1.65] text-ink-700 sm:text-[19px]">
+          Yerinde görmenizi öneriyoruz; bir fotoğraf, köpeğin o alanda nasıl hareket ettiğini
+          göstermez. Randevu alın,
+          köpeğinizle birlikte gelin.
+        </p>
+        <p className="mt-6 text-[16px] text-ink-500">{fullAddress}</p>
+      </PageHero>
 
       {/* Galeri */}
-      <Section tone="cream">
+      <Section tone="paper">
         <div className="grid grid-cols-1 gap-3 sm:grid-cols-3">
           {gallery.map((g) => (
             <Figure
@@ -76,39 +70,37 @@ export default function Page() {
               alt={g.alt}
               label={g.label}
               sizes="(min-width: 640px) 33vw, 100vw"
-              className={`rounded-2xl ${g.span}`}
+              className={`rounded-lg ${g.span}`}
             />
           ))}
         </div>
         {/* ⚠️ Bu satırı yalnızca galerideki TÜM görseller gerçek tesis fotoğrafı olduğunda geri koyun.
             Yapay zeka ile üretilmiş veya stok görsel varken bu cümle doğru olmaz. */}
-        <p className="mt-5 text-[13px] text-ink-500">
+        <p className="mt-5 text-[15px] text-ink-500">
           Tesisi yerinde görmek için randevu alabilirsiniz.
         </p>
       </Section>
 
       {/* Alanlar */}
       <Section tone="white">
-        <Eyebrow>Alanlar</Eyebrow>
         <H2>Tesiste ne var</H2>
         <div className="mt-12 grid gap-x-10 gap-y-9 sm:grid-cols-2">
           {areas.map((a) => (
-            <div key={a.title} className="border-t-2 border-ink-900/12 pt-5">
-              <h3 className="text-xl text-ink-900">{a.title}</h3>
-              <p className="mt-2.5 text-[15px] leading-relaxed text-ink-700">{a.text}</p>
+            <div key={a.title} className="border-t-2 border-ink-900/80 pt-5">
+              <h3 className="text-2xl text-ink-900">{a.title}</h3>
+              <p className="mt-3 text-[17px] leading-relaxed text-ink-700">{a.text}</p>
             </div>
           ))}
         </div>
       </Section>
 
       {/* Güvenlik */}
-      <Section tone="olive">
+      <Section tone="forest">
         <div className="grid gap-10 lg:grid-cols-2">
           <div>
-            <Eyebrow light>Güvenlik</Eyebrow>
-            <H2 className="text-cream-50">Bir sorun olduğunda ne oluyor</H2>
+            <H2 className="text-paper-50">Bir sorun olduğunda ne oluyor</H2>
           </div>
-          <div className="space-y-4 text-[16px] leading-relaxed text-cream-200/85">
+          <div className="space-y-4 text-[18px] leading-relaxed text-paper-200/90">
             <p>
               Konaklama öncesinde köpeğinizin kayıtlı veterineri ve acil durumda ulaşılacak kişi
               bilgisi alınır. Bir sorun olduğunda önce siz aranırsınız.
@@ -117,7 +109,7 @@ export default function Page() {
               Size ulaşılamayan acil durumlarda köpeğinizin sağlığı önceliklidir ve gecikmeden
               veterinere götürülür. Yapılan her işlem sonrasında ayrıntısıyla bildirilir.
             </p>
-            <p className="text-cream-200/60">
+            <p className="text-paper-200/60">
               {/* TODO: Anlaşmalı veteriner adı ve mesafesi netleşince buraya yazılacak. */}
               TODO: Anlaşmalı veteriner ve tesise uzaklığı burada belirtilecek.
             </p>
@@ -126,26 +118,25 @@ export default function Page() {
       </Section>
 
       {/* Ziyaret */}
-      <Section tone="cream">
+      <Section tone="paper">
         <div className="grid gap-10 lg:grid-cols-2 lg:items-center">
           <div>
-            <Eyebrow>Ziyaret</Eyebrow>
-            <H2>Gelip görün</H2>
+                <H2>Gelip görün</H2>
             <Lead>
               Ziyaret için randevu alıyoruz — böylece size ayrılmış zaman oluyor ve tesisteki
               köpeklerin düzeni bozulmuyor. Köpeğinizi de getirin; ortamı önceden tanıması ilk
               konaklamayı kolaylaştırır.
             </Lead>
             <p className="mt-6 text-[15px] text-ink-700">
-              {site.hours.map((h) => `${h.days}: ${h.time}`).join(" · ")}
+              {site.hours.map((h) => `${h.days}: ${h.time}`).join(", ")}
             </p>
             <div className="mt-8">
-              <DirectionsTextLink className="inline-flex items-center gap-2 rounded-full border border-ink-900/20 px-7 py-3.5 text-[15px] font-semibold text-ink-900 transition-colors hover:bg-ink-900 hover:text-cream-100">
+              <DirectionsTextLink className="inline-flex items-center gap-2 rounded-full border-2 border-ink-900/80 px-7 py-3.5 text-[16px] font-semibold text-ink-900 transition-colors hover:bg-ink-900 hover:text-paper-50">
                 Yol tarifi alın
               </DirectionsTextLink>
             </div>
           </div>
-          <div className="overflow-hidden rounded-2xl">
+          <div className="overflow-hidden rounded-lg">
             <MapBlock className="aspect-[4/3]" />
           </div>
         </div>

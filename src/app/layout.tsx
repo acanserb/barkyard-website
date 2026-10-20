@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Fraunces, Inter } from "next/font/google";
+import { Outfit } from "next/font/google";
 import "./globals.css";
 
 import { site } from "@/config/site";
@@ -10,16 +10,9 @@ import JsonLd from "@/components/JsonLd";
 import { localBusinessSchema } from "@/lib/schema";
 import { GtmNoScript, GtmScript } from "@/components/Gtm";
 
-const fraunces = Fraunces({
-  subsets: ["latin"],
-  variable: "--font-fraunces",
-  display: "swap",
-  axes: ["SOFT", "WONK"],
-});
-
-const inter = Inter({
+const outfit = Outfit({
   subsets: ["latin", "latin-ext"],
-  variable: "--font-inter",
+  variable: "--font-outfit",
   display: "swap",
 });
 
@@ -54,14 +47,14 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#26261f",
+  themeColor: "#f3f5f0",
   width: "device-width",
   initialScale: 1,
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="tr" className={`${fraunces.variable} ${inter.variable}`}>
+    <html lang="tr" className={outfit.variable}>
       <head>
         <GtmScript />
       </head>
@@ -69,7 +62,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <GtmNoScript />
         <a
           href="#icerik"
-          className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50 focus:rounded-full focus:bg-ink-900 focus:px-5 focus:py-2 focus:text-cream-100"
+          className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50 focus:rounded-full focus:bg-forest-800 focus:px-5 focus:py-2 focus:text-paper-50"
         >
           İçeriğe geç
         </a>

@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { site, fullAddress } from "@/config/site";
-import { Container, Section } from "@/components/ui";
+import { PageHero, Section } from "@/components/ui";
 
 export const metadata: Metadata = {
   title: "KVKK ve Gizlilik Politikası",
@@ -17,17 +17,14 @@ export const metadata: Metadata = {
 export default function Page() {
   return (
     <>
-      <section className="border-b border-ink-900/8 bg-cream-100">
-        <Container className="py-14 sm:py-20">
-          <h1 className="max-w-3xl text-4xl leading-[1.1] sm:text-5xl">KVKK ve Gizlilik Politikası</h1>
-          <p className="mt-6 max-w-2xl text-[15px] leading-relaxed text-ink-500">
-            Bu metin taslaktır ve yayına alınmadan önce işletmenin gerçek veri işleme süreçlerine
-            göre güncellenmelidir.
-          </p>
-        </Container>
-      </section>
+      <PageHero title="KVKK ve Gizlilik Politikası">
+        <p className="mt-7 max-w-[56ch] text-[16px] leading-relaxed text-ink-500">
+          Bu metin taslaktır ve yayına alınmadan önce işletmenin gerçek veri işleme süreçlerine
+          göre güncellenmelidir.
+        </p>
+      </PageHero>
 
-      <Section tone="cream">
+      <Section tone="paper">
         <div className="max-w-3xl space-y-8 text-[16px] leading-relaxed text-ink-700">
           <div>
             <h2 className="mb-3 text-2xl text-ink-900">Veri sorumlusu</h2>
