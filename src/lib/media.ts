@@ -5,13 +5,13 @@
  *  availableImages : işletmenin GERÇEK fotoğrafları.
  *  stockImages     : gerçek fotoğraf gelene kadar kullanılan GEÇİCİ stok
  *                    görseller (Unsplash lisansı, /public/images altında).
- *                    Sitede "Temsili görsel" etiketiyle gösterilir ve
- *                    tesisin kendisine ait fotoğraf gibi sunulmaz.
+ *                    Tesis galerisinde ve ana sayfa tesis ön izlemesinde
+ *                    kullanılmaz; oralarda yalnızca gerçek fotoğraf görünür.
  *
  *  GERÇEK FOTOĞRAF GELDİĞİNDE:
  *   1. Aynı dosya adıyla /public/images/... altındaki stok görselin üzerine yazın
  *   2. Yolu stockImages listesinden silip availableImages listesine taşıyın
- *      (etiket kendiliğinden kalkar, tesis galerisinde görünmeye başlar)
+ *      (fotoğraf tesis galerisinde de görünmeye başlar)
  *
  *  Hiçbir listede olmayan görsel çağrılırsa canlı sitede o alan gösterilmez;
  *  geliştirme ortamında "Fotoğraf eklenecek" kutusu çıkar.

@@ -53,8 +53,7 @@ Başka hiçbir dosyada iletişim bilgisi yazılı değildir.
 ### 2. Fotoğraflar
 
 Gerçek fotoğraflar gelene kadar aşağıdaki alanlarda **geçici stok görseller** (Unsplash lisansı,
-sitenin kendi sunucusunda) kullanılıyor. Bunlar sitede küçük bir **"Temsili görsel"** etiketiyle
-gösterilir; ana sayfadaki tesis ön izlemesinde ve /tesis/ sayfasındaki "Tesisten kareler"
+sitenin kendi sunucusunda) kullanılıyor. Bunlar ana sayfadaki tesis ön izlemesinde ve /tesis/ sayfasındaki "Tesisten kareler"
 galerisinde kullanılmaz (oralarda yalnızca gerçek tesis fotoğrafı görünür).
 
 ```
@@ -74,7 +73,7 @@ galerisinde kullanılmaz (oralarda yalnızca gerçek tesis fotoğrafı görünü
 
 **Gerçek fotoğraf çekildiğinde:** aynı dosya adıyla stok görselin üzerine yazın (en az 1600 px,
 JPG) ve `src/lib/media.ts` içinde yolu `stockImages` listesinden `availableImages` listesine taşıyın.
-Etiket kendiliğinden kalkar, fotoğraf tesis galerisinde de görünmeye başlar.
+Fotoğraf tesis galerisinde de görünmeye başlar.
 
 Hiçbir listede olmayan bir görsel canlı sitede hiç çizilmez; `npm run dev` ile çalışırken kesik
 çizgili "Fotoğraf eklenecek" kutusu olarak görünür.

@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import type { ReactNode } from "react";
-import { hasImage, isDev, isStock } from "@/lib/media";
+import { hasImage, isDev } from "@/lib/media";
 import { site } from "@/config/site";
 import { WhatsAppButton, PhoneButton } from "@/components/actions";
 import { btnBase, btnVariants, type ButtonVariant } from "@/components/buttons";
@@ -184,11 +184,6 @@ export function Figure({
           priority={priority}
           className={imgClassName}
         />
-        {isStock(src) && (
-          <span className="absolute bottom-3 left-3 rounded-full bg-white/85 px-2.5 py-1 text-[12px] font-medium text-ink-700 backdrop-blur-sm">
-            Temsili görsel
-          </span>
-        )}
       </div>
     );
   }

@@ -18,7 +18,7 @@ export const metadata = pageMetadata({
 /**
  * TESİS GALERİSİ
  * "Tesisten kareler" yalnızca GERÇEK fotoğraflarla (lib/media.ts → availableImages) çizilir.
- * Stok görseller yalnızca aşağıdaki alan kartlarında, "Temsili görsel" etiketiyle kullanılır.
+ * Stok görseller yalnızca aşağıdaki alan kartlarında kullanılır.
  */
 const gallery = [
   { src: "/images/tesis/bahce-1.jpg", alt: "Açık bahçe ve koşu alanı" },
