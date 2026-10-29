@@ -39,3 +39,12 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# yerel yardımcı dosyalar
+*.log
+/.yedek-2026-10-29/
+/baslat.bat
+/calistir.bat
+/site-baslat.bat
+/stok-indir.bat
+/yayinla.bat

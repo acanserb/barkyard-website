@@ -1,14 +1,27 @@
 /**
  * Dönüşüm sinyali gönderimi.
- * Tüm olaylar dataLayer'a yazılır; GTM üzerinden GA4, Google Ads
- * ve Meta CAPI'ye buradan dağıtılır. Kodda başka hiçbir yere
- * ölçüm etiketi gömülmez.
+ *
+ * Olaylar yalnızca window.dataLayer'a yazılır. Sitede şu anda GTM/GA4 kurulu
+ * DEĞİLDİR (site.gtmId boş); bu durumda dataLayer sayfa içinde kalır, hiçbir
+ * yere gönderilmez ve çerez oluşturmaz. GTM kurulduğunda bu olaylar GA4
+ * event'i olarak tanımlanır.
  *
  * Tanımlı olaylar:
- *   whatsapp_click | phone_click | form_submit | directions_click
+ *   whatsapp_click          WhatsApp bağlantısına tıklama
+ *   phone_click             Telefon bağlantısına tıklama
+ *   directions_click        Yol tarifi / harita bağlantısı
+ *   lead_form_whatsapp_open İletişim formu doğrulandı ve WhatsApp açıldı
+ *   service_page_view       Hizmet sayfası görüntülendi (sayfa başına bir kez)
+ *
+ * Her bağlantıda tek bir onClick vardır; aynı etkileşim iki event üretmez.
  */
 
-type EventName = "whatsapp_click" | "phone_click" | "form_submit" | "directions_click";
+export type EventName =
+  | "whatsapp_click"
+  | "phone_click"
+  | "directions_click"
+  | "lead_form_whatsapp_open"
+  | "service_page_view";
 
 declare global {
   interface Window {

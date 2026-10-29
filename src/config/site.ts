@@ -14,7 +14,8 @@ export const site = {
   name: "Barkyard Ankara",
   shortName: "Barkyard",
   tagline: "Play · Stay · Train",
-  legalName: "TODO: Resmî işletme unvanı", // TODO — Barkyard tarafından iletilecek
+  // TODO: Resmî işletme unvanı (vergi levhasındaki ad). Boş kaldığı sürece sitede gösterilmez.
+  legalName: "" as string,
   foundedBrandYear: 2026, // Barkyard markasının kuruluş yılı
   trainerName: "Emre Sönmez",
 
@@ -73,8 +74,12 @@ export const site = {
 
 /** Sayfa bazlı ön doldurulmuş WhatsApp mesajı üretir. */
 export function whatsappLink(context: string): string {
-  const text = encodeURIComponent(`Merhaba, ${context} hakkında bilgi almak istiyorum.`);
-  return `https://wa.me/${site.whatsapp}?text=${text}`;
+  return whatsappMessageLink(`Merhaba, ${context} hakkında bilgi almak istiyorum.`);
+}
+
+/** Verilen metinle WhatsApp sohbetini açan bağlantı. */
+export function whatsappMessageLink(message: string): string {
+  return `https://wa.me/${site.whatsapp}?text=${encodeURIComponent(message)}`;
 }
 
 export const telLink = `tel:${site.phone}`;

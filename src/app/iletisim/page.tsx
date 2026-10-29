@@ -1,86 +1,94 @@
-import type { Metadata } from "next";
 import { site, fullAddress } from "@/config/site";
-import { Container, PageHero, Section, WhatsAppButton } from "@/components/ui";
-import { DirectionsTextLink, PhoneLink } from "@/components/ContactLinks";
+import { Container, PageHero, Section } from "@/components/ui";
+import { DirectionsLink, PhoneLink, WhatsAppButton } from "@/components/actions";
+import { ClockIcon, MailIcon, MapPinIcon, PhoneIcon, WhatsAppIcon } from "@/components/icons";
 import ContactForm from "@/components/ContactForm";
 import MapBlock from "@/components/MapBlock";
 import JsonLd from "@/components/JsonLd";
 import { breadcrumbSchema } from "@/lib/schema";
+import { pageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "İletişim ve Ulaşım",
+export const metadata = pageMetadata({
+  title: "İletişim ve Yol Tarifi",
   description:
-    "Barkyard Ankara iletişim bilgileri, adres, çalışma saatleri ve yol tarifi. WhatsApp, telefon veya form ile ulaşın.",
-  alternates: { canonical: "/iletisim/" },
-};
+    "Barkyard Ankara iletişim bilgileri: telefon, WhatsApp, e-posta, Gölbaşı Oğulbey adresi ve çalışma saatleri. Tesis ziyareti için randevu alın.",
+  path: "/iletisim/",
+});
+
+const rowCls = "flex gap-4 rounded-[var(--radius-card)] bg-white p-5 sm:p-6";
+const iconCls = "flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-sage-100 text-forest-800";
 
 export default function Page() {
   return (
     <>
-      <PageHero title="Bize ulaşın">
-        <p className="mt-7 max-w-[52ch] text-[18px] leading-[1.65] text-ink-700 sm:text-[19px]">
-          En hızlı yol WhatsApp. Köpeğinizi ve ihtiyacınızı kısaca yazın; size doğru yer olup
-          olmadığımızı dürüstçe söyleyelim.
-        </p>
-      </PageHero>
+      <PageHero
+        crumb="İletişim"
+        title="Bize ulaşın"
+        lead="Bize ulaşmanın en hızlı yolu WhatsApp. Köpeğinizi ve ihtiyacınızı kısaca yazın; size uygun bir program olup olmadığını açıkça söyleyelim."
+      />
 
-      <Section tone="paper">
-        <div className="grid gap-12 lg:grid-cols-[1fr_1.1fr]">
+      <Section tone="paper" labelledBy="form-baslik">
+        <div className="grid gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:gap-12">
           {/* Bilgiler */}
           <div>
-            <div className="space-y-8">
-              <div>
-                <p className="font-display text-[20px] font-semibold text-ink-900">Telefon</p>
-                <p className="mt-2 text-2xl">
-                  <PhoneLink source="iletisim" className="hover:text-lawn-600" />
-                </p>
-              </div>
-
-              <div>
-                <p className="font-display text-[20px] font-semibold text-ink-900">WhatsApp</p>
-                <div className="mt-3">
-                  <WhatsAppButton context="hizmetleriniz" source="iletisim" />
+            <h2 className="sr-only">İletişim bilgileri</h2>
+            <ul className="space-y-3">
+              <li className={rowCls}>
+                <span className={iconCls}><WhatsAppIcon className="h-5 w-5" /></span>
+                <div>
+                  <p className="font-semibold">WhatsApp</p>
+                  <p className="mt-0.5 text-[16px] text-ink-700">Köpeğinizi ve ihtiyacınızı kısaca yazın.</p>
+                  <WhatsAppButton source="iletisim" label="WhatsApp'tan yazın" className="mt-3" />
                 </div>
-              </div>
-
-              <div>
-                <p className="font-display text-[20px] font-semibold text-ink-900">E-posta</p>
-                <p className="mt-2 text-[16px]">
-                  <a href={`mailto:${site.email}`} className="hover:text-lawn-600">
+              </li>
+              <li className={rowCls}>
+                <span className={iconCls}><PhoneIcon className="h-5 w-5" /></span>
+                <div>
+                  <p className="font-semibold">Telefon</p>
+                  <PhoneLink source="iletisim" className="mt-0.5 inline-block text-[22px] font-semibold text-forest-800 underline-offset-4 hover:underline" />
+                </div>
+              </li>
+              <li className={rowCls}>
+                <span className={iconCls}><MailIcon className="h-5 w-5" /></span>
+                <div className="min-w-0">
+                  <p className="font-semibold">E-posta</p>
+                  <a href={`mailto:${site.email}`} className="mt-0.5 inline-block break-all text-[17px] text-forest-800 underline underline-offset-4">
                     {site.email}
                   </a>
-                </p>
-              </div>
-
-              <div>
-                <p className="font-display text-[20px] font-semibold text-ink-900">Adres</p>
-                <p className="mt-2 text-[16px] leading-relaxed text-ink-700">{fullAddress}</p>
-                <DirectionsTextLink className="mt-2 inline-block border-b-2 border-accent-400 text-[16px] font-semibold text-ink-900">
-                  Yol tarifi alın
-                </DirectionsTextLink>
-              </div>
-
-              <div>
-                <p className="font-display text-[20px] font-semibold text-ink-900">Çalışma saatleri</p>
-                <ul className="mt-2 space-y-1 text-[16px] text-ink-700">
+                </div>
+              </li>
+              <li className={rowCls}>
+                <span className={iconCls}><MapPinIcon className="h-5 w-5" /></span>
+                <div>
+                  <p className="font-semibold">Adres</p>
+                  <address className="mt-0.5 text-[16px] leading-relaxed not-italic text-ink-700">{fullAddress}</address>
+                  <DirectionsLink source="iletisim" className="mt-2 inline-block text-[16px] font-semibold text-forest-800 underline underline-offset-4">
+                    Yol tarifi alın
+                  </DirectionsLink>
+                </div>
+              </li>
+              <li className={rowCls}>
+                <span className={iconCls}><ClockIcon className="h-5 w-5" /></span>
+                <div>
+                  <p className="font-semibold">Çalışma saatleri</p>
                   {site.hours.map((h) => (
-                    <li key={h.days}>
-                      {h.days}: {h.time}
-                    </li>
+                    <p key={h.days} className="mt-0.5 text-[16px] text-ink-700">
+                      {h.days} {h.time}
+                    </p>
                   ))}
-                </ul>
-                <p className="mt-3 text-[15px] text-ink-500">
-                  Tesis ziyaretleri randevuyla yapılır. Uygun günü önceden yazmanız yeterli.
-                </p>
-              </div>
-            </div>
+                  <p className="mt-1 text-[15px] text-ink-500">Tesis ziyaretleri randevuyla yapılır.</p>
+                </div>
+              </li>
+            </ul>
           </div>
 
           {/* Form */}
-          <div className="rounded-lg border-2 border-ink-900/80 bg-white p-7 sm:p-9">
-            <h2 className="text-2xl">Talep formu</h2>
-            <p className="mt-2 mb-7 text-[15px] leading-relaxed text-ink-700">
-              Dört alanı doldurun, gerisini biz soralım.
+          <div className="rounded-[var(--radius-card-lg)] bg-white p-6 shadow-[var(--shadow-soft)] sm:p-9">
+            <h2 id="form-baslik" className="text-[1.75rem] sm:text-[2rem]">
+              Bilgi talep formu
+            </h2>
+            <p className="mb-6 mt-2 text-[16px] leading-relaxed text-ink-700">
+              Formu doldurun; bilgileriniz düzenli bir WhatsApp mesajına dönüşsün, siz de tek dokunuşla gönderin.
             </p>
             <ContactForm />
           </div>
@@ -88,10 +96,10 @@ export default function Page() {
       </Section>
 
       {/* Harita */}
-      <section className="bg-paper-50 pb-16 sm:pb-20">
+      <section className="bg-paper-50 pb-16 sm:pb-24" aria-label="Konum">
         <Container>
-          <div className="overflow-hidden rounded-lg">
-            <MapBlock className="min-h-[260px]" />
+          <div className="overflow-hidden rounded-[var(--radius-card-lg)]">
+            <MapBlock className="min-h-[280px]" source="iletisim_map" />
           </div>
         </Container>
       </section>

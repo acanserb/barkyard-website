@@ -52,40 +52,42 @@ Başka hiçbir dosyada iletişim bilgisi yazılı değildir.
 
 ### 2. Fotoğraflar
 
-1. Dosyayı `/public/images/...` altına koyun
-2. Yolunu `src/lib/media.ts` içindeki `availableImages` listesine ekleyin
-
-Listede olmayan görseller **placeholder** olarak görünür — eksik fotoğraf siteyi bozmaz.
-Hangi fotoğrafın nereye geleceği placeholder üzerinde yazar.
-
-Beklenen dosyalar:
+Gerçek fotoğraflar gelene kadar aşağıdaki alanlarda **geçici stok görseller** (Unsplash lisansı,
+sitenin kendi sunucusunda) kullanılıyor. Bunlar sitede küçük bir **"Temsili görsel"** etiketiyle
+gösterilir; ana sayfadaki tesis ön izlemesinde ve /tesis/ sayfasındaki "Tesisten kareler"
+galerisinde kullanılmaz (oralarda yalnızca gerçek tesis fotoğrafı görünür).
 
 ```
-/public/images/tesis/tesis-dis-gorunum.jpg   ✓ mevcut
-/public/images/tesis/bahce-1.jpg
-/public/images/tesis/bahce-2.jpg
-/public/images/tesis/kapali-alan.jpg
-/public/images/tesis/konaklama-1.jpg
-/public/images/tesis/egitim-alani.jpg
-/public/images/tesis/dinlenme.jpg
-/public/images/hizmetler/kopek-egitimi.jpg
-/public/images/hizmetler/kopek-oteli.jpg
-/public/images/hizmetler/gunduz-bakim.jpg
-/public/images/hizmetler/rehabilitasyon.jpg
-/public/images/ekip/egitmen.jpg
+/public/images/hizmetler/kopek-egitimi.jpg   stok
+/public/images/hizmetler/kopek-oteli.jpg     stok
+/public/images/hizmetler/gunduz-bakim.jpg    stok
+/public/images/hizmetler/rehabilitasyon.jpg  stok
+/public/images/tesis/bahce-1.jpg             stok  (açık alan)
+/public/images/tesis/bahce-2.jpg             stok  (bahçede oyun)
+/public/images/tesis/kapali-alan.jpg         stok  (kapalı alan)
+/public/images/tesis/konaklama-1.jpg         stok  (konaklama)
+/public/images/tesis/egitim-alani.jpg        stok  (eğitim alanı)
+/public/images/tesis/dinlenme.jpg            stok  (dinlenme)
+/public/images/tesis/tesis-dis-gorunum.jpg   gerçek
+/public/images/ekip/emre-*.jpg               gerçek (5 adet)
 ```
 
-**Stok fotoğraf kullanmayın.** Bu kategoride stok görsel güveni doğrudan düşürür.
+**Gerçek fotoğraf çekildiğinde:** aynı dosya adıyla stok görselin üzerine yazın (en az 1600 px,
+JPG) ve `src/lib/media.ts` içinde yolu `stockImages` listesinden `availableImages` listesine taşıyın.
+Etiket kendiliğinden kalkar, fotoğraf tesis galerisinde de görünmeye başlar.
 
-### 3. Eksik metinler
+Hiçbir listede olmayan bir görsel canlı sitede hiç çizilmez; `npm run dev` ile çalışırken kesik
+çizgili "Fotoğraf eklenecek" kutusu olarak görünür.
 
-`TODO:` araması yapın. Doldurulması gerekenler:
+### 3. Eksik bilgiler
 
-- `src/app/hakkimizda/page.tsx` — eğitmenin adı, hikâyesi, sertifikaları
-- `src/app/tesis/page.tsx` — anlaşmalı veteriner bilgisi
-- `src/app/kvkk/page.tsx` — saklama süreleri, kamera kaydı, başvuru usulü
-  (**bu metin taslaktır, hukuki onay gerekir**)
-- `src/content/reviews.ts` — gerçek Google yorumları
+`TODO` araması yapın. İşletmeden alınması gerekenler:
+
+- `src/config/site.ts` — `legalName` (resmî unvan), `gtmId`, `mapsEmbedUrl`
+- `src/app/kvkk/page.tsx` — veri sorumlusu unvanı, hukuki sebepler, saklama süreleri,
+  kamera kaydı, aktarım, başvuru yöntemi (**taslaktır, hukuki onay gerekir**)
+- `src/content/reviews.ts` — gerçek ve izinli müşteri yorumları (boşken bölüm gösterilmez)
+- Anlaşmalı veteriner bilgisi (doğrulanınca `src/app/tesis/page.tsx` güvenlik bölümüne)
 
 ### 4. Favicon ve OG görseli
 
@@ -93,6 +95,13 @@ Beklenen dosyalar:
 - `public/images/marka/og-barkyard.png` ✓ 1200×630 OG görseli üretildi
 
 ---
+
+## Tasarım sistemi
+
+- Renk ve tipografi token'ları: `src/app/globals.css` (`@theme`). Kontrast oranları dosyanın başında.
+- Yazı tipleri: Bricolage Grotesque (başlık) ve Figtree (gövde), `public/fonts/` altından
+  kendi sunucumuzdan yüklenir; Google Fonts'a istek yapılmaz. Türkçe karakterler `latin-ext` dosyasındadır.
+- Ortak bileşenler: `src/components/ui.tsx` (sunucu), `src/components/actions.tsx` (WhatsApp/telefon/yol tarifi, istemci).
 
 ## Yapı
 
@@ -144,7 +153,7 @@ Site tek bir GTM konteyneri üzerinden ölçülür. Kodun içinde başka hiçbir
    (boş bırakılırsa hiçbir script yüklenmez — sayfa hızı etkilenmez)
 2. GTM içinde GA4 yapılandırma etiketini kurun
 3. Aşağıdaki `dataLayer` olaylarını GA4 event'i olarak tanımlayın
-4. GA4'te `whatsapp_click`, `phone_click` ve `form_submit` olaylarını **key event** işaretleyin
+4. GA4'te `whatsapp_click`, `phone_click` ve `lead_form_whatsapp_open` olaylarını **key event** işaretleyin
 5. Google Ads dönüşümlerini bu key event'lere bağlayın
 6. Meta Pixel'i aynı konteynerden ekleyin; CAPI için sunucu tarafı gerekir
 
@@ -154,16 +163,19 @@ Site tek bir GTM konteyneri üzerinden ölçülür. Kodun içinde başka hiçbir
 |---|---|---|
 | `whatsapp_click` | WhatsApp bağlantısına tıklama | `cta_context`, `cta_source`, `page_path` |
 | `phone_click` | Telefon bağlantısına tıklama | `cta_source`, `page_path` |
-| `form_submit` | İletişim formu gönderimi | `form_service`, `page_path` |
-| `directions_click` | Yol tarifi bağlantısı | `page_path` |
+| `directions_click` | Yol tarifi / harita bağlantısı | `cta_source`, `page_path` |
+| `lead_form_whatsapp_open` | Form doğrulandı ve WhatsApp açıldı | `form_service`, `page_path` |
+| `service_page_view` | Hizmet sayfası görüntülendi (bir kez) | `service`, `page_path` |
 
 `cta_source` hangi bölümün dönüştürdüğünü söyler: `hero`, `header`, `mobile_bar`,
 `kopek-oteli-ankara_pricing`, `tesis_closing` vb.
 
 ### Consent Mode v2
 
-Varsayılan olarak `denied` başlatılır. Çerez onay bileşeni eklendiğinde
-`gtag('consent','update',…)` çağrısı yapılmalıdır. **Çerez onay bileşeni henüz eklenmedi.**
+Varsayılan olarak `denied` başlatılır. **Şu anda sitede hiçbir analitik/reklam çerezi yoktur**
+(`gtmId` boş), bu yüzden çerez onay paneli bilinçli olarak eklenmedi. GTM/GA4 açılmadan önce
+gerçek çerez kullanımına göre bir onay paneli eklenmeli, `gtag('consent','update',…)` ile
+bağlanmalı ve `/kvkk/` sayfasındaki "Çerezler" bölümü güncellenmelidir.
 
 ### ⚠️ Ölçümün gerçek darboğazı
 
@@ -176,7 +188,9 @@ tutulması gerekir. Bu, sitenin değil operasyonun sorumluluğudur ve kurulmazsa
 
 ## İletişim formu
 
-Şu anda sunucu tarafı yoktur: form gönderildiğinde derlenmiş mesaj WhatsApp'ta açılır.
+Şu anda sunucu tarafı yoktur: form doğrulandıktan sonra derlenmiş mesaj WhatsApp'ta açılır.
+Site form verisini hiçbir yere kaydetmez veya göndermez; formun altındaki açıklama ve KVKK
+sayfası bu davranışa göre yazılmıştır. Bir API/CRM eklenirse bu metinler de güncellenmelidir.
 Böylece tüm talep tek kanalda toplanır ve hiçbir talep e-posta kutusunda kaybolmaz.
 
 E-posta veya CRM entegrasyonu istendiğinde `src/components/ContactForm.tsx` içindeki

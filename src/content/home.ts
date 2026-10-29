@@ -2,66 +2,71 @@ import type { FaqItem } from "@/content/services";
 
 /**
  * Ana sayfa içeriği.
- * ⚠️ Doğrulanamayan hiçbir iddia eklemeyin (köpek sayısı, yıl, ödül vb.).
+ * ⚠️ Doğrulanamayan hiçbir iddia eklemeyin (köpek sayısı, ödül, puan, "en iyi" vb.).
+ * Barkyard markası 2026'da kuruldu; Köpek Koleji geçmişi ayrı bir bilgi olarak anlatılır.
  */
 
-export const trustPoints = [
+export const whyPoints = [
   {
-    title: "Yaklaşık otuz yıllık tesis geleneği",
-    text: "Köpek Koleji'nde yıllarca sunulan hizmet, aynı tesiste ve aynı anlayışla Barkyard adıyla sürüyor.",
+    title: "Köpeğe ve size özel değerlendirme",
+    text: "Program hazır bir paketten seçilmez. Köpeğinizin yaşı, geçmişi ve yaşadığı ortam konuşulduktan sonra belirlenir.",
   },
   {
-    title: "Bahçeli, açık alanlı tesis",
-    text: "Köpeklerin gerçekten koşabildiği açık alan ve korunaklı kapalı bölümler.",
+    title: "Sahibi sürecin içindedir",
+    text: "Köpeğinizin öğrendiklerini sizinle birlikte tekrar ederiz. Evde uygulamanız gerekenleri yazılı olarak veririz.",
   },
   {
-    title: "Sahibi süreçten çıkarılmaz",
-    text: "Köpeğinizin öğrendiği sizinle birlikte tekrar edilir, evde uygulanacaklar yazılı verilir.",
+    title: "Tesisi randevuyla gezebilirsiniz",
+    text: "Köpeğinizin kalacağı, oynayacağı ve çalışacağı alanları karar vermeden önce yerinde görürsünüz.",
   },
   {
-    title: "Gösterecek her şeyimiz var",
-    text: "Randevu alın, tesisi gezin, kalacağı yeri görün. Kapalı kapı yok.",
+    title: "Süreç boyunca düzenli bilgi",
+    text: "Konaklama, gündüz bakım ve eğitim süresince fotoğraf ve durum bilgisini siz sormadan paylaşırız.",
   },
 ];
 
 export const facilityHighlights = [
-  "Açık bahçe ve koşu alanı — köpeklerin gün içinde gerçekten hareket edebildiği alan",
-  "Korunaklı kapalı bölüm — hava koşullarından bağımsız çalışma ve dinlenme",
-  "Ayrılmış konaklama alanları; grup kullanımı köpeklerin uyumuna göre belirlenir",
-  "Eğitim çalışmaları için ayrı, dikkat dağıtıcısı kontrol edilebilen alan",
-  "Konaklama ve gündüz bakım süresince düzenli fotoğraf ve durum bilgisi",
+  "Açık bahçe ve koşu alanı",
+  "Korunaklı kapalı bölüm",
+  "Köpeklere ayrılmış konaklama alanları",
+  "Dikkat dağıtıcıların kontrol edildiği eğitim alanı",
 ];
 
 export const howWeWork = [
   {
     title: "Tanışma ve değerlendirme",
-    text: "Köpeğinizi ve ihtiyacınızı dinleriz. Doğru yer olmadığımız bir durum varsa bunu ilk görüşmede söyleriz — herkesin köpeği için doğru yer değiliz.",
+    text: "Köpeğinizi ve ihtiyacınızı dinleriz. Size uygun bir program sunamayacaksak bunu ilk görüşmede söyleriz.",
   },
   {
-    title: "Size özel program",
-    text: "Hazır kalıplarla çalışmıyoruz. Süre, içerik ve çalışma biçimi köpeğin durumuna göre belirlenir ve neyin yapılacağı yazılı olarak iletilir.",
+    title: "Köpeğe uygun program",
+    text: "Süre, içerik ve çalışma biçimi köpeğin durumuna göre belirlenir. Ne yapılacağını size yazılı olarak iletiriz.",
   },
   {
-    title: "Süreç boyunca bilgi",
-    text: "Ne yaptığımızı, nasıl ilerlediğini ve neyin işe yaramadığını düzenli olarak paylaşırız. Sormanızı beklemeyiz.",
+    title: "Süreç ve takip",
+    text: "Neyin iyi gittiğini, neyin üzerinde daha çok durulması gerektiğini düzenli olarak paylaşırız.",
   },
 ];
 
+/** Ana sayfada gösterilen en önemli sorular. Tamamı /sss/ sayfasındadır. */
 export const homeFaq: FaqItem[] = [
   {
     q: "Tesisi önceden gezebilir miyim?",
-    a: "Evet, gezmenizi özellikle istiyoruz. Randevu alın, köpeğinizle birlikte gelin, kalacağı veya çalışacağı alanı yerinde görün. Köpeğinizi göremediğiniz bir yere bırakmayın — bu bizim için de geçerli bir kural.",
+    a: "Evet, gezmenizi özellikle öneriyoruz. Randevu alın, mümkünse köpeğinizle birlikte gelin ve kalacağı ya da çalışacağı alanı yerinde görün.",
   },
   {
-    q: "Köpeğimin aşıları eksik, kabul ediyor musunuz?",
-    a: "Hayır. Aşı ve parazit uygulamalarının güncel olması, tesisteki tüm köpeklerin sağlığı için zorunlu. Aşı takvimi devam ediyorsa uygun tarihi birlikte planlarız.",
+    q: "Aşıları eksik olan köpekleri kabul ediyor musunuz?",
+    a: "Hayır. Aşı ve parazit uygulamalarının güncel olması tesisteki bütün köpeklerin sağlığı için zorunludur. Aşı takvimi devam ediyorsa uygun tarihi birlikte planlarız.",
   },
   {
-    q: "Barkyard yeni bir marka, neden size güveneyim?",
-    a: "Haklı bir soru. Marka yeni, ancak hizmet yeni değil: Köpek Koleji çatısı altında yaklaşık otuz yıl sunulan hizmeti aynı tesiste, aynı anlayış ve sistemle sürdürüyoruz. Eğitmenimiz Emre Sönmez, bu anlayışı yaklaşık 15 yıl boyunca hocası Tarkan Özvardar'ın rehberliğinde öğrendi. Sizden güven istemiyoruz — gelin, tesisi görün, eğitmenle konuşun, köpeğinizle bir seans yapın. Kararınızı gördüklerinize göre verin.",
+    q: "Ücretler nasıl belirleniyor?",
+    a: "Ücret; hizmete, süreye ve köpeğinizin ihtiyacına göre değişir. Köpeğinizin yaşını, ırkını ve ihtiyacınızı WhatsApp'tan yazarsanız size bilgi veririz.",
+  },
+  {
+    q: "Barkyard yeni bir marka. Neden güveneyim?",
+    a: "Barkyard markası 2026'da kuruldu. Aynı tesiste daha önce yaklaşık otuz yıl boyunca Köpek Koleji adıyla eğitim ve bakım hizmeti verildi; eğitmenimiz Emre Sönmez bu anlayışı yaklaşık 15 yıl boyunca hocası Tarkan Özvardar'ın yanında öğrendi. Yine de kararınızı bizim anlattıklarımıza göre değil, gördüklerinize göre vermenizi isteriz: Tesisi gezin, eğitmenle konuşun, sorularınızı sorun.",
   },
   {
     q: "Köpek gezdirme hizmetiniz var mı?",
-    a: "Şehir içinde eve gelip köpek alma şeklinde ayrı bir gezdirme hizmeti vermiyoruz. Köpeğinizin düzenli hareket ihtiyacı için gündüz bakım düzeni çoğu durumda daha verimli oluyor.",
+    a: "Eve gelip köpek alma şeklinde ayrı bir gezdirme hizmetimiz yok. Köpeğinizin düzenli hareket ihtiyacı için gündüz bakım çoğu durumda daha uygun bir seçenek oluyor.",
   },
 ];

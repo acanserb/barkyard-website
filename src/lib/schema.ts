@@ -1,7 +1,11 @@
 import { site } from "@/config/site";
 import { services } from "@/content/services";
 
-/** Google Haritalar / yerel arama için ana işletme yapısal verisi. */
+/**
+ * Google Haritalar / yerel arama için ana işletme yapısal verisi.
+ * ⚠️ Puan (aggregateRating) veya yorum (review) EKLEMEYİN: sitede yayınlanmış,
+ * doğrulanmış yorum yoktur. Adres ve saatler Google Business Profile ile aynı olmalıdır.
+ */
 export function localBusinessSchema() {
   return {
     "@context": "https://schema.org",
@@ -12,10 +16,10 @@ export function localBusinessSchema() {
     url: site.url,
     telephone: site.phone,
     email: site.email,
-    image: `${site.url}/images/marka/og-barkyard.png`,
+    image: [`${site.url}/images/tesis/tesis-dis-gorunum.jpg`, `${site.url}/images/marka/og-barkyard.png`],
     logo: `${site.url}/images/marka/barkyard-logo-512.png`,
     description:
-      "Ankara'da köpek eğitimi, köpek oteli, gündüz bakım ve davranış rehabilitasyonu hizmeti veren köpek eğitim ve yaşam merkezi.",
+      "Ankara Gölbaşı'nda köpek eğitimi, köpek oteli, gündüz bakım ve davranış rehabilitasyonu hizmeti veren tesis.",
     address: {
       "@type": "PostalAddress",
       streetAddress: site.address.street,

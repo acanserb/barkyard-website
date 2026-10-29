@@ -2,35 +2,26 @@
 
 import { site, fullAddress } from "@/config/site";
 import { track } from "@/lib/track";
+import { MapPinIcon, ArrowIcon } from "@/components/icons";
 
 /**
  * Harita bloğu.
  *
- * Google, klasik "maps.google.com/...&output=embed" adreslerinin iframe içinde
- * gösterilmesini engelliyor. Bu yüzden yalnızca resmî embed adresi
- * (google.com/maps/embed?pb=...) kabul edilir.
+ * Yalnızca resmî Google embed adresi (google.com/maps/embed?pb=...) kabul edilir.
+ * site.mapsEmbedUrl boşken harita yerine tıklanabilir bir yol tarifi kartı gösterilir;
+ * böylece Google'a sayfa yüklenirken hiçbir istek gitmez ve çerez oluşmaz.
  *
- * mapsEmbedUrl boş veya geçersizse harita yerine tıklanabilir bir
- * "yol tarifi" kartı gösterilir — boş çerçeve değil.
- *
- * Resmî embed adresini almak için:
- *   Google Haritalar > işletmeyi aç > Paylaş > Haritayı yerleştir >
- *   HTML kodunu kopyala > içindeki src="..." değerini site.ts'e yapıştır
+ * Not: Gömülü Google haritası eklenirse Google çerezleri devreye girebilir;
+ * bu durumda KVKK/çerez metni güncellenmelidir.
  */
 const isEmbeddable = site.mapsEmbedUrl.includes("google.com/maps/embed");
 
-export default function MapBlock({
-  className = "",
-  tone = "light",
-}: {
-  className?: string;
-  tone?: "light" | "dark";
-}) {
+export default function MapBlock({ className = "", source }: { className?: string; source: string }) {
   if (isEmbeddable) {
     return (
       <iframe
         src={site.mapsEmbedUrl}
-        title="Barkyard Ankara konumu"
+        title="Barkyard Ankara konumu, Google Haritalar"
         loading="lazy"
         referrerPolicy="no-referrer-when-downgrade"
         className={`w-full border-0 ${className}`}
@@ -38,34 +29,31 @@ export default function MapBlock({
     );
   }
 
-  const dark = tone === "dark";
-
   return (
     <a
       href={site.mapsUrl}
       target="_blank"
       rel="noopener noreferrer"
-      onClick={() => track("directions_click")}
-      className={`group flex flex-col items-start justify-center gap-4 p-8 transition-colors sm:p-10 ${
-        dark
-          ? "bg-forest-900/50 text-paper-100 hover:bg-forest-900/70"
-          : "bg-paper-200 text-ink-900 hover:bg-paper-300"
-      } ${className}`}
+      onClick={() => track("directions_click", { cta_source: source })}
+      className={`group relative flex flex-col justify-end gap-4 overflow-hidden bg-sage-200 p-7 text-ink-900 transition-colors hover:bg-sage-300 sm:p-10 ${className}`}
     >
-      <svg viewBox="0 0 24 24" className="h-7 w-7 text-lawn-600" fill="none" stroke="currentColor" strokeWidth="1.6" aria-hidden="true">
-        <path d="M12 21s7-5.5 7-11a7 7 0 1 0-14 0c0 5.5 7 11 7 11Z" strokeLinecap="round" strokeLinejoin="round" />
-        <circle cx="12" cy="10" r="2.5" />
+      {/* Dekoratif harita dokusu */}
+      <svg aria-hidden="true" className="absolute inset-0 h-full w-full text-forest-800/10" preserveAspectRatio="none" viewBox="0 0 400 300">
+        <path d="M0 210 C 80 180, 140 240, 220 200 S 340 150, 400 170" fill="none" stroke="currentColor" strokeWidth="10" />
+        <path d="M120 0 C 140 80, 100 160, 160 300" fill="none" stroke="currentColor" strokeWidth="6" />
+        <path d="M300 0 C 280 90, 330 180, 290 300" fill="none" stroke="currentColor" strokeWidth="4" />
       </svg>
-      <div>
-        <p className={`text-[16px] font-semibold ${dark ? "text-accent-400" : "text-lawn-600"}`}>
-          Konum
-        </p>
-        <p className={`mt-2 max-w-sm text-[17px] leading-relaxed ${dark ? "text-paper-200/90" : "text-ink-700"}`}>
-          {fullAddress}
-        </p>
-      </div>
-      <span className={`inline-flex items-center gap-2 border-b-2 border-accent-400 text-[16px] font-semibold ${dark ? "text-paper-100" : "text-ink-900"}`}>
-        Google Haritalar&apos;da aç
+      <span className="relative flex h-12 w-12 items-center justify-center rounded-full bg-forest-800 text-paper-50">
+        <MapPinIcon className="h-6 w-6" />
+      </span>
+      <span className="relative">
+        <span className="block text-[15px] font-semibold text-forest-800">Konum</span>
+        <span className="mt-1 block max-w-sm text-[17px] leading-relaxed">{fullAddress}</span>
+      </span>
+      <span className="relative inline-flex items-center gap-2 text-[16px] font-semibold text-forest-800">
+        Google Haritalar&apos;da yol tarifi alın
+        <ArrowIcon className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+        <span className="sr-only"> (yeni sekmede açılır)</span>
       </span>
     </a>
   );
