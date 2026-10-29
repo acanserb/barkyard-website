@@ -7,8 +7,8 @@ import type { FaqItem } from "@/content/services";
 
 export const trustPoints = [
   {
-    title: "2009'dan beri eğitmen deneyimi",
-    text: "Barkyard yeni bir marka; kurucu eğitmen 2009'dan bu yana köpeklerle çalışıyor.",
+    title: "Yaklaşık otuz yıllık tesis geleneği",
+    text: "Köpek Koleji'nde yıllarca sunulan hizmet, aynı tesiste ve aynı anlayışla Barkyard adıyla sürüyor.",
   },
   {
     title: "Bahçeli, açık alanlı tesis",
@@ -35,7 +35,7 @@ export const facilityHighlights = [
 export const howWeWork = [
   {
     title: "Tanışma ve değerlendirme",
-    text: "Köpeğinizi ve ihtiyacınızı dinleriz. Uygun olmadığımız bir durum varsa bunu ilk görüşmede söyleriz — herkesin köpeği için doğru yer değiliz.",
+    text: "Köpeğinizi ve ihtiyacınızı dinleriz. Doğru yer olmadığımız bir durum varsa bunu ilk görüşmede söyleriz — herkesin köpeği için doğru yer değiliz.",
   },
   {
     title: "Size özel program",
@@ -58,7 +58,7 @@ export const homeFaq: FaqItem[] = [
   },
   {
     q: "Barkyard yeni bir marka, neden size güveneyim?",
-    a: "Haklı bir soru. Marka yeni, ancak eğitmenimiz 2009'dan bu yana bu işi yapıyor. Sizden güven istemiyoruz — gelin, tesisi görün, eğitmenle konuşun, köpeğinizle bir seans yapın. Kararınızı gördüklerinize göre verin.",
+    a: "Haklı bir soru. Marka yeni, ancak hizmet yeni değil: Köpek Koleji çatısı altında yaklaşık otuz yıl sunulan hizmeti aynı tesiste, aynı anlayış ve sistemle sürdürüyoruz. Eğitmenimiz Emre Sönmez, bu anlayışı yaklaşık 15 yıl boyunca hocası Tarkan Özvardar'ın rehberliğinde öğrendi. Sizden güven istemiyoruz — gelin, tesisi görün, eğitmenle konuşun, köpeğinizle bir seans yapın. Kararınızı gördüklerinize göre verin.",
   },
   {
     q: "Köpek gezdirme hizmetiniz var mı?",

@@ -208,7 +208,7 @@ export function TextLink({ children }: { children: ReactNode }) {
 
 export function CtaBlock({
   title = "Köpeğiniz için doğru yer miyiz, birlikte bakalım",
-  text = "Köpeğinizi ve ihtiyacınızı yazın. Size uygun olup olmadığımızı dürüstçe söyleyelim. Uygun değilsek bunu da söyleriz.",
+  text = "Köpeğinizi ve ihtiyacınızı yazın. Size doğru yer olup olmadığımızı dürüstçe söyleyelim; olmadığımızı düşünürsek bunu da açıkça söyleriz.",
   context = "hizmetleriniz",
   source = "cta_block",
 }: {

@@ -66,11 +66,9 @@ export default function Page() {
           </div>
 
           <div className={`${card} bg-[#d6e6f2] lg:col-span-4`}>
-            <p className="text-[16px] font-medium text-[#1e2a24]/70">Eğitmen deneyimi</p>
-            <p className="mt-2 text-[28px] font-bold leading-tight tracking-[-0.02em]">
-              {site.trainerSinceYear}&apos;dan beri köpeklerle
-            </p>
-            <p className="mt-2 text-[16px] text-[#1e2a24]/75">Marka yeni, eğitmen değil.</p>
+            <p className="text-[16px] font-medium text-[#1e2a24]/70">Eğitmen</p>
+            <p className="mt-2 text-[28px] font-bold leading-tight tracking-[-0.02em]">{site.trainerName}</p>
+            <p className="mt-2 text-[16px] text-[#1e2a24]/75">FCI Doberman, Schnauzer ve Rottweiler ırk hakemi.</p>
           </div>
 
           <div className={`${card} bg-[#f7d9cb] lg:col-span-4`}>
@@ -194,12 +192,13 @@ export default function Page() {
           <div className="grid gap-3 sm:gap-4 lg:grid-cols-[1.1fr_0.9fr]">
             <div className={`${card} bg-[#d6e6f2] lg:p-12`}>
               <h2 className="max-w-[16ch] text-[clamp(2rem,4.5vw,3.4rem)] font-bold leading-[1.02] tracking-[-0.035em]">
-                Markamız yeni, deneyimimiz değil
+                Marka yeni, hizmet yeni değil
               </h2>
               <p className="mt-5 max-w-[52ch] text-[18px] leading-[1.6] text-[#1e2a24]/85">
-                Barkyard yeni kurulmuş bir merkez ve bunu saklamıyoruz. Burada çalışan eğitmen{" "}
-                {site.trainerSinceYear} yılından bu yana köpeklerle çalışıyor. Gelin, tesisi gezin,
-                eğitmenle konuşun, köpeğinizle bir seans yapın. Kararı ondan sonra verin.
+                Yaklaşık otuz yıl Köpek Koleji çatısı altında sunulan hizmeti, aynı tesiste ve aynı
+                anlayışla Barkyard adıyla sürdürüyoruz. Eğitmenimiz {site.trainerName}, Doberman&apos;larıyla
+                Avrupa&apos;nın 19 ülkesinde yarıştı. Gelin, tesisi gezin, kendisiyle konuşun, köpeğinizle
+                bir seans yapın. Kararı ondan sonra verin.
               </p>
               <div className="mt-8">
                 <Link href="/hakkimizda/" className={pillDark}>
@@ -208,11 +207,11 @@ export default function Page() {
               </div>
             </div>
             <Figure
-              src="/images/ekip/egitmen.jpg"
-              alt="Barkyard Ankara eğitmeni"
+              src="/images/ekip/emre-portre.jpg"
+              alt="Eğitmen Emre Sönmez, Doberman'ıyla bir yarışmada"
               label="Eğitmen portresi"
               sizes="(min-width: 1024px) 40vw, 95vw"
-              className="aspect-[4/3] w-full rounded-[2rem] lg:aspect-auto lg:min-h-[320px]"
+              className="aspect-[4/5] w-full rounded-[2rem] lg:aspect-auto lg:min-h-[420px]"
             />
           </div>
         </section>
@@ -250,7 +249,7 @@ export default function Page() {
                 Doğru yer miyiz? Yazın.
               </h2>
               <p className="mt-5 max-w-[46ch] text-[19px] leading-[1.55] text-[#1e2a24]/85">
-                Uygun olup olmadığımızı dürüstçe söyleriz. Uygun değilsek bunu da söyleriz.
+                Doğru yer olup olmadığımızı dürüstçe söyleriz. Doğru yer olmadığımızı düşünürsek bunu da açıkça söyleriz.
               </p>
               <div className="mt-8 flex flex-col gap-3 sm:flex-row">
                 <a href={whatsappLink("hizmetleriniz")} target="_blank" rel="noopener noreferrer" className={pillDark}>

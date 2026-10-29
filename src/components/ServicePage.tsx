@@ -93,7 +93,7 @@ export default function ServicePage({ service: s }: { service: Service }) {
       <Section tone="paper">
         <div className="grid gap-12 md:grid-cols-2 md:gap-16">
           <div>
-            <h2 className="text-3xl sm:text-4xl">Kimler için uygun</h2>
+            <h2 className="text-3xl sm:text-4xl">Bu hizmet kimler için</h2>
             <ul className="mt-7 space-y-4">
               {s.forWhom.map((item) => (
                 <li key={item} className="flex gap-3.5 text-[17px] leading-relaxed text-ink-700">
@@ -106,7 +106,7 @@ export default function ServicePage({ service: s }: { service: Service }) {
             </ul>
           </div>
           <div className="rounded-lg border-2 border-ink-900/80 bg-white p-7 sm:p-9">
-            <h2 className="text-3xl sm:text-4xl">Uygun değilse</h2>
+            <h2 className="text-3xl sm:text-4xl">Bu hizmet kimler için değil</h2>
             <ul className="mt-7 space-y-4">
               {s.notForWhom.map((item) => (
                 <li key={item} className="flex gap-3.5 text-[17px] leading-relaxed text-ink-700">
@@ -118,7 +118,7 @@ export default function ServicePage({ service: s }: { service: Service }) {
               ))}
             </ul>
             <p className="mt-7 text-[16px] leading-relaxed text-ink-500">
-              Uygun olmadığımız durumu size söylemek işimizin bir parçası. Yanlış programa
+              Doğru yer olmadığımızda bunu açıkça söylemek işimizin bir parçası. Yanlış programa
               yönlendirmek kimseye fayda sağlamaz.
             </p>
           </div>
@@ -179,10 +179,10 @@ export default function ServicePage({ service: s }: { service: Service }) {
             </ul>
           </div>
           <div className="on-dark rounded-lg bg-forest-800 p-8 text-paper-100 sm:p-10">
-            <h2 className="text-3xl text-paper-50 sm:text-4xl">Uygunluk ve tarih için yazın</h2>
+            <h2 className="text-3xl text-paper-50 sm:text-4xl">Yer ve tarih için yazın</h2>
             <p className="mt-5 max-w-[46ch] text-[17px] leading-relaxed text-paper-200/90">
-              Köpeğinizin yaşını, ırkını ve ihtiyacınızı yazmanız yeterli. Uygun olup olmadığımızı
-              ve en yakın tarihi aynı gün bildiririz.
+              Köpeğinizin yaşını, ırkını ve ihtiyacınızı yazmanız yeterli. Size doğru yer olup olmadığımızı
+              ve en yakın tarihi aynı gün söyleriz.
             </p>
             <div className="mt-7">
               <WhatsAppButton
@@ -222,7 +222,7 @@ export default function ServicePage({ service: s }: { service: Service }) {
 
       <CtaBlock
         title={`${s.navLabel} için doğru yer miyiz?`}
-        text="Köpeğinizi ve ihtiyacınızı yazın; uygun olup olmadığımızı dürüstçe söyleyelim."
+        text="Köpeğinizi ve ihtiyacınızı yazın; size doğru yer olup olmadığımızı dürüstçe söyleyelim."
         context={s.whatsappContext}
         source={`${s.slug}_closing`}
       />

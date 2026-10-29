@@ -38,7 +38,7 @@ export const services: Service[] = [
     metaDescription:
       "Ankara'da köpek eğitimi. Temel itaat, günlük yaşam becerileri ve davranış çalışması. Tesiste ve sahibiyle birlikte yürütülen program. WhatsApp'tan bilgi alın.",
     heroImage: "/images/hizmetler/kopek-egitimi.jpg",
-    heroImageAlt: "Barkyard Ankara tesisinde köpek eğitimi çalışması",
+    heroImageAlt: "Eğitim çalışmasında oturan köpek",
     intro:
       "Eğitim, köpeğe komut ezberletmek değil; köpeğin ve sahibinin aynı dili konuşmasını sağlamaktır. Barkyard'da her program, köpeğin yaşı, geçmişi ve yaşadığı ortam değerlendirildikten sonra kurulur. Sahibi süreç dışında bırakılmaz — eğitimin kalıcı olması, evde de aynı şekilde sürdürülmesine bağlıdır.",
     primaryAction: "whatsapp",
@@ -65,7 +65,7 @@ export const services: Service[] = [
     ],
     processTitle: "Nasıl ilerliyor",
     process: [
-      { step: "Ön görüşme", text: "WhatsApp veya telefonla köpeğinizi ve ihtiyacınızı anlatırsınız. Uygun olup olmadığını açıkça söyleriz." },
+      { step: "Ön görüşme", text: "WhatsApp veya telefonla köpeğinizi ve ihtiyacınızı anlatırsınız. Doğru yer olup olmadığımızı açıkça söyleriz." },
       { step: "Tesiste tanışma", text: "Köpeğinizle birlikte gelirsiniz. Tesisi görür, eğitmenle tanışırsınız." },
       { step: "Program", text: "Belirlenen içerik ve süreyle çalışma başlar. Süreç boyunca düzenli bilgilendirilirsiniz." },
       { step: "Aktarım ve teslim", text: "Öğrenilenler sizinle birlikte tekrar edilir, evde uygulanacaklar yazılı olarak verilir." },
@@ -92,9 +92,9 @@ export const services: Service[] = [
     title: "Ankara Köpek Oteli ve Pansiyonu",
     metaTitle: "Köpek Oteli Ankara | Köpek Pansiyonu — Barkyard Ankara",
     metaDescription:
-      "Ankara'da bahçeli, gözetimli köpek oteli ve pansiyonu. Günlük rutin, açık alan ve düzenli bilgilendirme. Uygunluk ve tarih için WhatsApp'tan yazın.",
+      "Ankara'da bahçeli, gözetimli köpek oteli ve pansiyonu. Günlük rutin, açık alan ve düzenli bilgilendirme. Yer ve tarih için WhatsApp'tan yazın.",
     heroImage: "/images/hizmetler/kopek-oteli.jpg",
-    heroImageAlt: "Barkyard Ankara köpek oteli konaklama alanı",
+    heroImageAlt: "Yatağında dinlenen köpek",
     intro:
       "Köpeğinizi birine emanet etmek, verdiğiniz en zor kararlardan biridir. Barkyard bu kararı kolaylaştırmak için tek bir şey yapar: her şeyi göstermek. Tesisi gezmeden, kalacağı yeri görmeden ve günlük rutini öğrenmeden rezervasyon yapmanızı beklemiyoruz.",
     primaryAction: "whatsapp",
@@ -121,7 +121,7 @@ export const services: Service[] = [
     ],
     processTitle: "Rezervasyon nasıl yapılır",
     process: [
-      { step: "Tarih ve uygunluk", text: "WhatsApp'tan tarihleri yazarsınız, kapasite durumunu aynı gün bildiririz." },
+      { step: "Tarih ve doluluk", text: "WhatsApp'tan tarihleri yazarsınız, kapasite durumunu aynı gün bildiririz." },
       { step: "Tesis ziyareti", text: "Konaklama öncesi tesisi gezmenizi öneriyoruz. Köpeğiniz de ortamı önceden tanımış olur." },
       { step: "Bilgi formu", text: "Beslenme düzeni, alışkanlıklar, ilaçlar, veteriner bilgisi ve acil durumda ulaşılacak kişi kayda alınır." },
       { step: "Konaklama", text: "Köpeğiniz kalır, siz düzenli bilgilendirilirsiniz. Teslimde nasıl geçtiğini birlikte değerlendiririz." },
@@ -152,7 +152,7 @@ export const services: Service[] = [
     metaDescription:
       "Ankara'da köpek gündüz bakımı. Siz işteyken köpeğiniz hareket, oyun ve düzenli rutin içinde gününü geçirir. Deneme günü için WhatsApp'tan yazın.",
     heroImage: "/images/hizmetler/gunduz-bakim.jpg",
-    heroImageAlt: "Barkyard Ankara gündüz bakım açık alanında oynayan köpekler",
+    heroImageAlt: "Çimenlikte oynayan köpekler",
     intro:
       "Gün boyu evde yalnız kalan bir köpeğin enerjisi kaybolmaz; akşam eve döndüğünüzde başka bir biçimde karşınıza çıkar. Gündüz bakım, bu enerjinin gün içinde doğru şekilde harcanmasını sağlar. Köpeğiniz sabah gelir, günü hareket ve sosyal ortamda geçirir, akşam yorulmuş ve sakin şekilde eve döner.",
     primaryAction: "whatsapp",
@@ -192,7 +192,7 @@ export const services: Service[] = [
     faq: [
       { q: "Köpeğimi gezdirme hizmetiniz var mı?", a: "Gündüz bakım kapsamında köpeğiniz gün içinde düzenli olarak açık alanda hareket eder ve yürüyüşe çıkarılır. Şehir içinde eve gelip alma şeklinde ayrı bir gezdirme hizmeti vermiyoruz; ihtiyacınız buysa gündüz bakım düzeni çoğu durumda daha iyi sonuç veriyor." },
       { q: "Haftada kaç gün gelmeli?", a: "Enerjisi yüksek köpeklerde haftada 2–3 gün belirgin fark yaratır. Deneme günü sonrasında köpeğinize uygun düzeni beraber belirleriz." },
-      { q: "Köpeğim diğer köpeklerle geçinemiyorsa?", a: "Deneme gününde bunu görürüz ve size dürüstçe söyleriz. Grup ortamı uygun değilse zorlamayız; bireysel düzen veya farklı bir hizmet öneririz." },
+      { q: "Köpeğim diğer köpeklerle geçinemiyorsa?", a: "Deneme gününde bunu görürüz ve size dürüstçe söyleriz. Grup ortamı köpeğinize göre değilse zorlamayız; bireysel düzen veya farklı bir hizmet öneririz." },
       { q: "Sabah kaçta bırakıp akşam kaçta alabilirim?", a: "Bırakma ve alma çalışma saatleri içinde yapılır. Programınıza göre saatleri önceden konuşuruz." },
       { q: "Yarım gün seçeneği var mı?", a: "Evet. Köpeğinizin ihtiyacına ve sizin programınıza göre yarım gün düzeni kurulabilir." },
     ],
@@ -208,7 +208,7 @@ export const services: Service[] = [
     metaDescription:
       "Ankara'da köpek davranış rehabilitasyonu: saldırganlık, korku, aşırı tepkisellik ve travma kaynaklı davranışlar. Önce değerlendirme, sonra gerçekçi bir plan.",
     heroImage: "/images/hizmetler/rehabilitasyon.jpg",
-    heroImageAlt: "Barkyard Ankara'da davranış rehabilitasyonu çalışması",
+    heroImageAlt: "Sahibiyle çalışan köpek",
     intro:
       "Buraya genellikle çok şey denedikten sonra geliniyor. Davranış problemleri komut eksikliğinden değil, köpeğin dünyayı nasıl algıladığından kaynaklanır — bu yüzden standart itaat programıyla çözülmez. Size baştan söyleyeceğimiz şey şu: her davranış tamamen ortadan kalkmaz, ancak çoğu davranış yönetilebilir hale gelir. Neyin mümkün olduğunu değerlendirmeden söylemeyiz.",
     primaryAction: "phone",
@@ -251,7 +251,7 @@ export const services: Service[] = [
       { q: "Saldırgan köpeğim düzelir mi?", a: "\"Düzelir\" kelimesi bu alanda yanıltıcıdır. Çoğu vakada davranışın şiddeti ve sıklığı belirgin şekilde azalır ve durum yönetilebilir hale gelir. Ancak tetikleyicinin tamamen ortadan kalkacağını kimse dürüstçe söyleyemez. Değerlendirmeden sonra size gerçekçi beklentiyi anlatırız." },
       { q: "Ne kadar sürer?", a: "Davranış rehabilitasyonu itaat eğitiminden uzun sürer ve doğrusal ilerlemez. İyi giden haftaların ardından geri adımlar olabilir; bu normaldir. Süreyi değerlendirmeden sonra konuşuruz." },
       { q: "Neden önce veterinere yönlendiriyorsunuz?", a: "Ani ortaya çıkan saldırganlık ve tepkiselliğin arkasında sıklıkla ağrı veya tıbbi bir neden vardır. Bunu elemeden davranış çalışması yapmak, hem sonuçsuz kalır hem de köpeğe haksızlıktır." },
-      { q: "Köpeğim ısırdı, kabul eder misiniz?", a: "Değerlendirmeden sonra karar veririz. Isırma geçmişini eksiksiz paylaşmanız şart. Kabul edemeyeceğimiz bir durum varsa bunu da açıkça söyler, sizi uygun bir yönlendirmeyle baş başa bırakmayız." },
+      { q: "Köpeğim ısırdı, kabul eder misiniz?", a: "Değerlendirmeden sonra karar veririz. Isırma geçmişini eksiksiz paylaşmanız şart. Kabul edemeyeceğimiz bir durum varsa bunu da açıkça söyler, sizi doğru bir yere yönlendiririz." },
       { q: "Neden telefonla görüşmek istiyorsunuz?", a: "Bu vakalarda yazışma yeterli bilgi vermiyor. Kısa bir telefon görüşmesi, durumu doğru anlamamızı ve size boşuna umut ya da gereksiz endişe vermememizi sağlıyor." },
     ],
   },

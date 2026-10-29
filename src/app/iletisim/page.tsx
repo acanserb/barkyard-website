@@ -19,7 +19,7 @@ export default function Page() {
     <>
       <PageHero title="Bize ulaşın">
         <p className="mt-7 max-w-[52ch] text-[18px] leading-[1.65] text-ink-700 sm:text-[19px]">
-          En hızlı yol WhatsApp. Köpeğinizi ve ihtiyacınızı kısaca yazın; size uygun olup
+          En hızlı yol WhatsApp. Köpeğinizi ve ihtiyacınızı kısaca yazın; size doğru yer olup
           olmadığımızı dürüstçe söyleyelim.
         </p>
       </PageHero>

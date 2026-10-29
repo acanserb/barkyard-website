@@ -16,7 +16,7 @@ export const site = {
   tagline: "Play · Stay · Train",
   legalName: "TODO: Resmî işletme unvanı", // TODO — Barkyard tarafından iletilecek
   foundedBrandYear: 2026, // Barkyard markasının kuruluş yılı
-  trainerSinceYear: 2009, // Kurucu eğitmenin sektördeki deneyim başlangıcı
+  trainerName: "Emre Sönmez",
 
   // --- Alan adı --- (canonical, sitemap ve OG etiketleri buradan üretilir)
   url: "https://www.barkyardankara.com",
@@ -26,7 +26,7 @@ export const site = {
   phoneDisplay: "0 544 456 02 12",
   // WhatsApp numarası (başında + olmadan, sadece rakam)
   whatsapp: "905444560212",
-  email: "info@barkyardankara.com", // TODO: e-posta kutusu açılınca doğrula
+  email: "barkyardankara@gmail.com",
 
   // --- Konum ---
   address: {
