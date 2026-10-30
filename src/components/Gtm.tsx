@@ -25,6 +25,37 @@ j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNo
   );
 }
 
+/**
+ * Google Ads etiketi (gtag.js) — GTM kurulmadan doğrudan yüklenir.
+ * site.googleAdsId boşsa hiçbir script yüklenmez.
+ * Consent Mode v2 varsayılanı "denied" kalır (GtmScript ile aynı politika);
+ * çerez onay paneli eklendiğinde gtag('consent','update',…) ile güncellenir.
+ * Onay verilmeden Google Ads yalnızca çerezsiz sinyal alır; url_passthrough açıktır.
+ * Dönüşüm olayları src/lib/track.ts içinden gönderilir.
+ */
+export function GoogleAdsScript() {
+  if (!site.googleAdsId) return null;
+  const consentDefault = site.gtmId
+    ? ""
+    : "gtag('consent','default',{'ad_storage':'denied','ad_user_data':'denied','ad_personalization':'denied','analytics_storage':'denied','wait_for_update':500});";
+  return (
+    <>
+      <Script id="google-ads-init" strategy="beforeInteractive">
+        {`window.dataLayer=window.dataLayer||[];window.gtag=window.gtag||function(){dataLayer.push(arguments);};
+${consentDefault}
+gtag('set','url_passthrough',true);
+gtag('js',new Date());
+gtag('config','${site.googleAdsId}');`}
+      </Script>
+      <Script
+        id="google-ads-gtag"
+        src={`https://www.googletagmanager.com/gtag/js?id=${site.googleAdsId}`}
+        strategy="afterInteractive"
+      />
+    </>
+  );
+}
+
 export function GtmNoScript() {
   if (!site.gtmId) return null;
   return (
