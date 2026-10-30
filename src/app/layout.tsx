@@ -8,7 +8,7 @@ import MobileCtaBar from "@/components/MobileCtaBar";
 import JsonLd from "@/components/JsonLd";
 import { localBusinessSchema } from "@/lib/schema";
 import { OG_IMAGE } from "@/lib/seo";
-import { GtmNoScript, GtmScript } from "@/components/Gtm";
+import { GoogleAdsScript, GtmNoScript, GtmScript } from "@/components/Gtm";
 
 const defaultTitle = "Ankara Köpek Eğitimi, Köpek Oteli ve Gündüz Bakım | Barkyard Ankara";
 const defaultDescription =
@@ -61,6 +61,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         ))}
         <link rel="apple-touch-icon" href="/apple-icon.png" sizes="180x180" />
         <GtmScript />
+        <GoogleAdsScript />
       </head>
       <body>
         <GtmNoScript />
