@@ -70,6 +70,14 @@ export const site = {
   // TODO: Google Tag Manager konteyner kimliği (GTM-XXXXXXX).
   // Boş bırakılırsa hiçbir script yüklenmez, site temiz çalışır.
   gtmId: "",
+  // Google Ads (hesap 625-129-9178). GTM kurulmadan doğrudan gtag ile yüklenir.
+  // Boş bırakılırsa Google Ads etiketi yüklenmez.
+  googleAdsId: "AW-18544927279",
+  // Dönüşüm etiketleri (ikisi de "İkincil" işlem; sayım: Bir)
+  googleAdsLabels: {
+    whatsapp: "aQsSCNn4664dEK_E9IpF",
+    phone: "1-ZhCNz4664dEK_E9IpF",
+  },
 } as const;
 
 /** Sayfa bazlı ön doldurulmuş WhatsApp mesajı üretir. */
