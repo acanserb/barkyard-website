@@ -16,6 +16,8 @@
  * Her bağlantıda tek bir onClick vardır; aynı etkileşim iki event üretmez.
  */
 
+import { site } from "@/config/site";
+
 export type EventName =
   | "whatsapp_click"
   | "phone_click"
@@ -26,6 +28,7 @@ export type EventName =
 declare global {
   interface Window {
     dataLayer?: Record<string, unknown>[];
+    gtag?: (...args: unknown[]) => void;
   }
 }
 
@@ -37,4 +40,16 @@ export function track(event: EventName, params: Record<string, string> = {}) {
     ...params,
     page_path: window.location.pathname,
   });
+
+  // Google Ads dönüşümleri (ikincil). Aynı tıklama tek dönüşüm üretir;
+  // GA4'ten ayrıca içe aktarılmamalıdır (çift sayım).
+  const label =
+    event === "whatsapp_click" || event === "lead_form_whatsapp_open"
+      ? site.googleAdsLabels.whatsapp
+      : event === "phone_click"
+        ? site.googleAdsLabels.phone
+        : "";
+  if (site.googleAdsId && label && typeof window.gtag === "function") {
+    window.gtag("event", "conversion", { send_to: `${site.googleAdsId}/${label}` });
+  }
 }
