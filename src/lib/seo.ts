@@ -13,17 +13,20 @@ export function pageMetadata({
   title,
   description,
   path,
+  keywords,
   noindex = false,
 }: {
   title: string;
   description: string;
   path: string;
+  keywords?: string[];
   noindex?: boolean;
 }): Metadata {
   const fullTitle = `${title} | ${site.name}`;
   return {
     title,
     description,
+    ...(keywords?.length ? { keywords } : {}),
     alternates: { canonical: path },
     openGraph: {
       type: "website",
