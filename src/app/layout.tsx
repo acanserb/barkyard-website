@@ -22,6 +22,15 @@ export const metadata: Metadata = {
     template: `%s | ${site.name}`,
   },
   description: defaultDescription,
+  keywords: [
+    "ankara köpek eğitimi",
+    "ankara köpek oteli",
+    "köpek kreşi ankara",
+    "pet otel ankara",
+    "hayvan oteli ankara",
+    "gölbaşı köpek oteli",
+    "barkyard ankara",
+  ],
   applicationName: site.name,
   // favicon.ico, app/ klasöründen Next.js tarafından otomatik eklenir
   alternates: { canonical: "/" },
