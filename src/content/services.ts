@@ -12,6 +12,8 @@ export type Service = {
   /** Marka adı İÇERMEZ — layout şablonu " | Barkyard Ankara" ekler */
   metaTitle: string;
   metaDescription: string;
+  /** meta keywords (Google sıralamada kullanmaz; diğer araçlar ve müşteri raporları için) */
+  keywords?: string[];
   /** Gerçek fotoğraf gelene kadar lib/media.ts listesinde yok → canlı sitede gösterilmez */
   heroImage: string;
   heroImageAlt: string;
@@ -46,9 +48,10 @@ export const services: Service[] = [
     cardSummary:
       "Temel itaat ve günlük yaşam becerileri. Program köpeğinizin yaşına ve mevcut davranışına göre belirlenir; siz de sürecin içinde olursunuz.",
     title: "Ankara'da köpek eğitimi",
-    metaTitle: "Köpek Eğitimi Ankara | Temel İtaat ve Günlük Yaşam Eğitimi",
+    metaTitle: "Ankara Köpek Eğitimi | Temel İtaat ve Günlük Yaşam Eğitimi",
     metaDescription:
       "Ankara Gölbaşı'nda köpek eğitimi: temel itaat, tasmayla yürüyüş, çağırınca gelme ve ev içi kurallar. Sahibin katıldığı, köpeğe göre belirlenen program.",
+    keywords: ["ankara köpek eğitimi", "köpek eğitimi ankara", "köpek eğitmeni ankara", "temel itaat eğitimi", "gölbaşı köpek eğitimi", "köpek eğitimi"],
     heroImage: "/images/hizmetler/kopek-egitimi.jpg",
     heroImageAlt: "Çimenlikte oturup sahibine dikkatle bakan köpek",
     intro:
@@ -113,9 +116,10 @@ export const services: Service[] = [
     cardSummary:
       "Tatil, seyahat veya iş nedeniyle şehir dışındayken köpeğiniz bahçeli tesisimizde, düzenli bir günlük rutinle konaklar.",
     title: "Ankara'da köpek oteli ve pansiyon",
-    metaTitle: "Köpek Oteli Ankara | Köpek Pansiyonu ve Konaklama",
+    metaTitle: "Ankara Köpek Oteli | Köpek Pansiyonu ve Konaklama",
     metaDescription:
-      "Ankara Gölbaşı'nda bahçeli köpek oteli ve köpek pansiyonu. Günlük rutin, açık alan, beslenme düzeni ve düzenli bilgilendirme. Yer ve tarih için WhatsApp'tan yazın.",
+      "Ankara Gölbaşı'nda köpeklere özel bahçeli hayvan oteli ve pansiyon. Günlük rutin, açık alan, beslenme düzeni ve düzenli bilgilendirme. Tarih için WhatsApp'tan yazın.",
+    keywords: ["ankara köpek oteli", "köpek oteli ankara", "köpek pansiyonu ankara", "hayvan oteli ankara", "evcil hayvan oteli", "pet otel ankara", "gölbaşı köpek oteli", "köpek oteli fiyatları"],
     heroImage: "/images/hizmetler/kopek-oteli.jpg",
     heroImageAlt: "Yumuşak yatağında dinlenen köpek",
     intro:
@@ -172,6 +176,8 @@ export const services: Service[] = [
       { q: "Kendi mamasını getirebilir miyim?", a: "Evet, kendi mamasını getirmenizi özellikle öneriyoruz. Ani mama değişikliği sindirim sorunlarına yol açabilir." },
       { q: "Konaklama sırasında bilgi alabilir miyim?", a: "Evet. Düzenli olarak fotoğraf ve durum bilgisi paylaşırız. İstediğiniz zaman yazıp sorabilirsiniz." },
       { q: "Kaç gün önceden rezervasyon yapmalıyım?", a: "Bayram ve yaz tatili gibi yoğun dönemlerde yerler erken doluyor. Bu dönemler için mümkün olduğunca önceden yazmanızı öneririz." },
+      { q: "Köpek oteli fiyatları nasıl belirleniyor?", a: "Ücret; konaklama süresine, köpeğinizin ihtiyaçlarına ve konaklama sırasında istediğiniz ek hizmetlere göre değişir. Tarihleri ve köpeğinizin yaşını, ırkını WhatsApp'tan yazarsanız size net fiyatı bildiririz." },
+      { q: "Hayvan oteli olarak kedi veya başka evcil hayvan kabul ediyor musunuz?", a: "Barkyard yalnızca köpeklere hizmet veren bir tesis. Pet otel arayışınızda köpeğiniz için bahçeli, köpeklerin ihtiyaçlarına göre düzenlenmiş bir konaklama sunuyoruz." },
     ],
   },
 
@@ -182,10 +188,11 @@ export const services: Service[] = [
     cardTitle: "Gündüz Bakım",
     cardSummary:
       "Siz işteyken köpeğiniz evde yalnız kalmak yerine gününü hareket, oyun ve dinlenme düzeniyle geçirir; akşam size döner.",
-    title: "Ankara'da köpek gündüz bakımı",
+    title: "Ankara'da köpek gündüz bakımı ve kreşi",
     metaTitle: "Köpek Gündüz Bakım Ankara | Köpek Kreşi",
     metaDescription:
       "Ankara Gölbaşı'nda köpek gündüz bakımı ve köpek kreşi. Oyun, dinlenme, zihinsel aktivite ve gün sonu bilgilendirme. Deneme günü için WhatsApp'tan yazın.",
+    keywords: ["köpek kreşi ankara", "köpek gündüz bakım ankara", "köpek kreşi", "gölbaşı köpek kreşi", "köpek gündüz bakım"],
     heroImage: "/images/hizmetler/gunduz-bakim.jpg",
     heroImageAlt: "Çimenlik alanda birlikte oynayan köpekler",
     intro:
@@ -261,6 +268,7 @@ export const services: Service[] = [
     metaTitle: "Köpek Rehabilitasyonu Ankara | Davranış Sorunları",
     metaDescription:
       "Ankara Gölbaşı'nda köpek davranış rehabilitasyonu: saldırganlık, korku, tepkisellik ve ayrılık kaygısı. Önce değerlendirme, gerektiğinde veteriner yönlendirmesi, sonra kademeli bir plan.",
+    keywords: ["köpek rehabilitasyonu ankara", "köpek davranış eğitimi", "köpek davranış sorunları", "köpek saldırganlık eğitimi", "köpek ayrılık kaygısı"],
     heroImage: "/images/hizmetler/rehabilitasyon.jpg",
     heroImageAlt: "Sahibiyle çak yapan köpek",
     intro:
