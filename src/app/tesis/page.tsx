@@ -13,6 +13,7 @@ export const metadata = pageMetadata({
   description:
     "Barkyard Ankara'nın Gölbaşı Oğulbey'deki tesisi: açık bahçe, kapalı alan, konaklama alanları ve eğitim alanı. Tesisi görmek için randevu alın.",
   path: "/tesis/",
+  keywords: ["gölbaşı köpek tesisi", "bahçeli köpek oteli ankara", "barkyard tesis", "gölbaşı köpek oteli"],
 });
 
 /**
