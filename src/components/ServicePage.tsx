@@ -14,7 +14,7 @@ import { pageMetadata } from "@/lib/seo";
 import { hasImage } from "@/lib/media";
 
 export function serviceMetadata(s: Service): Metadata {
-  return pageMetadata({ title: s.metaTitle, description: s.metaDescription, path: `/${s.slug}/` });
+  return pageMetadata({ title: s.metaTitle, description: s.metaDescription, path: `/${s.slug}/`, keywords: s.keywords });
 }
 
 export default function ServicePage({ service: s }: { service: Service }) {
