@@ -6,6 +6,8 @@ import { services } from "@/content/services";
 export const metadata: Metadata = {
   title: "Sayfa bulunamadı",
   robots: { index: false, follow: true },
+  // Kök layout'taki canonical "/" bu sayfaya miras kalmasın
+  alternates: { canonical: null },
 };
 
 export default function NotFound() {

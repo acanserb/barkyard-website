@@ -51,6 +51,19 @@ export default function Page() {
                 Tesisimizi Keşfedin
               </ButtonLink>
             </div>
+            <a
+              href={site.mapsUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-6 inline-flex w-fit items-center gap-2 text-[16px] text-ink-700 underline-offset-4 hover:underline"
+            >
+              <span aria-hidden="true" className="tracking-[0.1em] text-clay-600">★★★★★</span>
+              <span>
+                Google&apos;da <strong className="font-semibold text-ink-900">{site.googleRating.score}</strong> puan ·{" "}
+                {site.googleRating.count} yorum
+              </span>
+              <span className="sr-only">(Google Haritalar yeni sekmede açılır)</span>
+            </a>
           </div>
 
           <Figure
@@ -268,18 +281,34 @@ export default function Page() {
       {reviews.length > 0 && (
         <section className="py-16 sm:py-24" aria-labelledby="yorum-baslik">
           <Container>
-            <SectionHeading id="yorum-baslik" eyebrow="Müşterilerimiz" title="Köpek sahipleri ne diyor?" />
+            <SectionHeading
+              id="yorum-baslik"
+              eyebrow={`Google'da ${site.googleRating.score} puan · ${site.googleRating.count} yorum`}
+              title="Köpek sahipleri ne diyor?"
+            />
             <ul className="mt-10 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
               {reviews.map((r) => (
                 <li key={r.name + r.text.slice(0, 12)} className="rounded-[1.5rem] bg-white p-6 sm:p-8">
                   <blockquote className="text-[17px] leading-[1.6] text-ink-700">“{r.text}”</blockquote>
                   <p className="mt-5 text-[15px] font-semibold text-ink-900">
                     {r.name}
-                    {r.dog ? ` · ${r.dog}` : ""} <span className="font-normal text-ink-500">· {r.service}</span>
+                    {r.dog ? ` · ${r.dog}` : ""}
+                    {r.service ? <span className="font-normal text-ink-500"> · {r.service}</span> : null}
+                    <span className="font-normal text-ink-500"> · Google yorumu</span>
                   </p>
                 </li>
               ))}
             </ul>
+            <a
+              href={site.mapsUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-8 inline-flex items-center gap-2 text-[17px] font-semibold text-forest-800 underline underline-offset-4"
+            >
+              Tüm yorumları Google&apos;da okuyun
+              <ArrowIcon className="h-4 w-4" />
+              <span className="sr-only">(Google Haritalar yeni sekmede açılır)</span>
+            </a>
           </Container>
         </section>
       )}
