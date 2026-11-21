@@ -41,6 +41,8 @@ export const site = {
   geo: { lat: 39.683744, lng: 32.803939 },
   // Google Business Profile kaydının kalıcı bağlantısı (CID)
   mapsUrl: "https://www.google.com/maps?cid=8041570790417170582",
+  // Google İşletme Profili puanı. Yorum sayısı arttıkça burayı güncelleyin.
+  googleRating: { score: "5,0", count: 10 },
   // TODO: Resmî Google embed adresi.
   // Google Haritalar > işletmeyi aç > Paylaş > Haritayı yerleştir > HTML kodundaki
   // src="..." değerini buraya yapıştırın (google.com/maps/embed?pb=... ile başlar).
