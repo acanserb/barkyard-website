@@ -48,7 +48,7 @@ export const services: Service[] = [
     cardSummary:
       "Temel itaat ve günlük yaşam becerileri. Program köpeğinizin yaşına ve mevcut davranışına göre belirlenir; siz de sürecin içinde olursunuz.",
     title: "Ankara'da köpek eğitimi",
-    metaTitle: "Ankara Köpek Eğitimi | Temel İtaat ve Günlük Yaşam Eğitimi",
+    metaTitle: "Ankara Köpek Eğitimi | Temel İtaat Eğitimi",
     metaDescription:
       "Ankara Gölbaşı'nda köpek eğitimi: temel itaat, tasmayla yürüyüş, çağırınca gelme ve ev içi kurallar. Sahibin katıldığı, köpeğe göre belirlenen program.",
     keywords: ["ankara köpek eğitimi", "köpek eğitimi ankara", "köpek eğitmeni ankara", "temel itaat eğitimi", "gölbaşı köpek eğitimi", "köpek eğitimi"],
@@ -267,7 +267,7 @@ export const services: Service[] = [
     title: "Ankara'da köpek davranış rehabilitasyonu",
     metaTitle: "Köpek Rehabilitasyonu Ankara | Davranış Sorunları",
     metaDescription:
-      "Ankara Gölbaşı'nda köpek davranış rehabilitasyonu: saldırganlık, korku, tepkisellik ve ayrılık kaygısı. Önce değerlendirme, gerektiğinde veteriner yönlendirmesi, sonra kademeli bir plan.",
+      "Ankara Gölbaşı'nda köpek davranış rehabilitasyonu: saldırganlık, korku, tepkisellik ve ayrılık kaygısı. Önce değerlendirme, sonra kademeli bir plan.",
     keywords: ["köpek rehabilitasyonu ankara", "köpek davranış eğitimi", "köpek davranış sorunları", "köpek saldırganlık eğitimi", "köpek ayrılık kaygısı"],
     heroImage: "/images/hizmetler/rehabilitasyon.jpg",
     heroImageAlt: "Sahibiyle çak yapan köpek",
